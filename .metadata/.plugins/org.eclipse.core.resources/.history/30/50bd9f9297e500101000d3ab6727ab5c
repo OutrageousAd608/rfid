@@ -1,0 +1,32 @@
+#ifndef TOUCH_H
+#define TOUCH_H
+
+#include "main.h"
+
+// --- CALIBRATION DATA (From your measurements) ---
+// Raw X controls Screen Y (Vertical)
+// Raw Y controls Screen X (Horizontal)
+
+#define RAW_X_MIN  400   // Value at Top Edge
+#define RAW_X_MAX  3500  // Value at Bottom Edge
+#define RAW_Y_MIN  600   // Value at Right Edge
+#define RAW_Y_MAX  3500  // Value at Left Edge
+
+// Screen Resolution
+#define ILI9341_WIDTH  240
+#define ILI9341_HEIGHT 320
+
+// --- Button Structure ---
+typedef struct {
+    uint16_t x;       // Top-left X
+    uint16_t y;       // Top-left Y
+    uint16_t width;
+    uint16_t height;
+} ButtonDef;
+
+// --- Functions ---
+uint8_t Touch_IsPressed(void);
+uint8_t Touch_GetPixels(uint16_t *x, uint16_t *y);
+uint8_t Button_IsPressed(ButtonDef button, uint16_t touch_x, uint16_t touch_y);
+
+#endif

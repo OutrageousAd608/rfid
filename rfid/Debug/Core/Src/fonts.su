@@ -1,0 +1,2 @@
+../Core/Src/fonts.c:122:6:LCD_WriteChar	48	static
+../Core/Src/fonts.c:146:6:LCD_WriteString	24	static

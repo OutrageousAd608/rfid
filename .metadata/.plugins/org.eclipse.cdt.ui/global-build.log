@@ -1,0 +1,1253 @@
+22:49:17 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+   8296	     12	   1660	   9968	   26f0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+22:50:48 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8296	     12	   1660	   9968	   26f0	rfid.elf
+Finished building: default.size.stdout
+ 
+22:52:07 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8296	     12	   1660	   9968	   26f0	rfid.elf
+Finished building: default.size.stdout
+ 
+22:53:33 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+   8296	     12	   1660	   9968	   26f0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+22:57:23 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+   8296	     12	   1660	   9968	   26f0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+22:57:39 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8296	     12	   1660	   9968	   26f0	rfid.elf
+Finished building: default.size.stdout
+ 
+23:04:37 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+   8368	     12	   1660	  10040	   2738	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+23:05:49 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8368	     12	   1660	  10040	   2738	rfid.elf
+Finished building: default.size.stdout
+ 
+23:06:32 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8368	     12	   1660	  10040	   2738	rfid.elf
+Finished building: default.size.stdout
+ 
+23:12:00 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8368	     12	   1660	  10040	   2738	rfid.elf
+Finished building: default.size.stdout
+ 
+23:12:25 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8368	     12	   1660	  10040	   2738	rfid.elf
+Finished building: default.size.stdout
+ 
+23:19:12 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8368	     12	   1660	  10040	   2738	rfid.elf
+Finished building: default.size.stdout
+ 
+23:19:29 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8368	     12	   1660	  10040	   2738	rfid.elf
+Finished building: default.size.stdout
+ 
+23:25:12 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+   8368	     12	   1660	  10040	   2738	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+23:26:49 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+   8296	     12	   1660	   9968	   26f0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+23:29:14 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+   8624	     12	   1660	  10296	   2838	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+23:33:01 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/ili9341.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ili9341.d" -MT"Core/Src/ili9341.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ili9341.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+../Core/Src/main.c:58:1: warning: data definition has no type or storage class
+   58 | LCD_Init();
+      | ^~~~~~~~
+../Core/Src/main.c:58:1: warning: type defaults to 'int' in declaration of 'LCD_Init' [-Wimplicit-int]
+../Core/Src/main.c:58:1: error: conflicting types for 'LCD_Init'; have 'int()'
+In file included from ../Core/Src/main.c:26:
+../Core/Inc/ili9341.h:22:6: note: previous declaration of 'LCD_Init' with type 'void(void)'
+   22 | void LCD_Init(void);
+      |      ^~~~~~~~
+../Core/Inc/ili9341.h:9:17: error: expected declaration specifiers or '...' before numeric constant
+    9 | #define RED     0xF800
+      |                 ^~~~~~
+../Core/Src/main.c:61:15: note: in expansion of macro 'RED'
+   61 | LCD_FillColor(RED);
+      |               ^~~
+../Core/Src/main.c:62:14: error: expected declaration specifiers or '...' before numeric constant
+   62 | LCD_FillRect(50, 50, 100, 100, BLUE);
+      |              ^~
+../Core/Src/main.c:62:18: error: expected declaration specifiers or '...' before numeric constant
+   62 | LCD_FillRect(50, 50, 100, 100, BLUE);
+      |                  ^~
+../Core/Src/main.c:62:22: error: expected declaration specifiers or '...' before numeric constant
+   62 | LCD_FillRect(50, 50, 100, 100, BLUE);
+      |                      ^~~
+../Core/Src/main.c:62:27: error: expected declaration specifiers or '...' before numeric constant
+   62 | LCD_FillRect(50, 50, 100, 100, BLUE);
+      |                           ^~~
+../Core/Inc/ili9341.h:8:17: error: expected declaration specifiers or '...' before numeric constant
+    8 | #define BLUE    0x001F
+      |                 ^~~~~~
+../Core/Src/main.c:62:32: note: in expansion of macro 'BLUE'
+   62 | LCD_FillRect(50, 50, 100, 100, BLUE);
+      |                                ^~~~
+../Core/Src/main.c:65:15: error: expected declaration specifiers or '...' before numeric constant
+   65 | LCD_DrawPixel(120, 160, WHITE);
+      |               ^~~
+../Core/Src/main.c:65:20: error: expected declaration specifiers or '...' before numeric constant
+   65 | LCD_DrawPixel(120, 160, WHITE);
+      |                    ^~~
+../Core/Inc/ili9341.h:14:17: error: expected declaration specifiers or '...' before numeric constant
+   14 | #define WHITE   0xFFFF
+      |                 ^~~~~~
+../Core/Src/main.c:65:25: note: in expansion of macro 'WHITE'
+   65 | LCD_DrawPixel(120, 160, WHITE);
+      |                         ^~~~~
+make: *** [Core/Src/subdir.mk:43: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:34:06 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+   8704	     12	   1660	  10376	   2888	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+23:38:02 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/fonts.d" -MT"Core/Src/fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fonts.o"
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/ili9341.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ili9341.d" -MT"Core/Src/ili9341.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ili9341.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+../Core/Src/fonts.c: In function 'LCD_WriteChar':
+../Core/Src/fonts.c:94:31: error: 'LCD_CurrentX' undeclared (first use in this function)
+   94 |                 LCD_DrawPixel(LCD_CurrentX + i, LCD_CurrentY + j, color);
+      |                               ^~~~~~~~~~~~
+../Core/Src/fonts.c:94:31: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/fonts.c:94:49: error: 'LCD_CurrentY' undeclared (first use in this function)
+   94 |                 LCD_DrawPixel(LCD_CurrentX + i, LCD_CurrentY + j, color);
+      |                                                 ^~~~~~~~~~~~
+../Core/Src/fonts.c:74:17: warning: unused variable 'b' [-Wunused-variable]
+   74 |     uint32_t i, b, j;
+      |                 ^
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:97:5: warning: implicit declaration of function 'LCD_WriteString' [-Wimplicit-function-declaration]
+   97 |     LCD_WriteString("RFID READER V1", 40, 10, Font_7x10, WHITE, BLUE);
+      |     ^~~~~~~~~~~~~~~
+../Core/Src/main.c:97:47: error: 'Font_7x10' undeclared (first use in this function)
+   97 |     LCD_WriteString("RFID READER V1", 40, 10, Font_7x10, WHITE, BLUE);
+      |                                               ^~~~~~~~~
+../Core/Src/main.c:97:47: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:46: Core/Src/fonts.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:46: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:38:19 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/fonts.d" -MT"Core/Src/fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fonts.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/fonts.c: In function 'LCD_WriteChar':
+../Core/Src/fonts.c:94:31: error: 'LCD_CurrentX' undeclared (first use in this function)
+   94 |                 LCD_DrawPixel(LCD_CurrentX + i, LCD_CurrentY + j, color);
+      |                               ^~~~~~~~~~~~
+../Core/Src/fonts.c:94:31: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:98:47: error: 'Font_7x10' undeclared (first use in this function)
+   98 |     LCD_WriteString("RFID READER V1", 40, 10, Font_7x10, WHITE, BLUE);
+      |                                               ^~~~~~~~~
+../Core/Src/main.c:98:47: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/fonts.c:94:49: error: 'LCD_CurrentY' undeclared (first use in this function)
+   94 |                 LCD_DrawPixel(LCD_CurrentX + i, LCD_CurrentY + j, color);
+      |                                                 ^~~~~~~~~~~~
+../Core/Src/fonts.c:74:17: warning: unused variable 'b' [-Wunused-variable]
+   74 |     uint32_t i, b, j;
+      |                 ^
+make: *** [Core/Src/subdir.mk:46: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:46: Core/Src/fonts.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+23:39:55 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/fonts.d" -MT"Core/Src/fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fonts.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  10084	     20	   1660	  11764	   2df4	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+23:46:37 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  10084	     20	   1660	  11764	   2df4	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+10:07:29 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/fonts.d" -MT"Core/Src/fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fonts.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  10604	     20	   1660	  12284	   2ffc	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+10:10:40 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  10604	     20	   1660	  12284	   2ffc	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:03:12 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/fonts.d" -MT"Core/Src/fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fonts.o"
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/ili9341.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ili9341.d" -MT"Core/Src/ili9341.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ili9341.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:98:21: warning: unused variable 'y_raw' [-Wunused-variable]
+   98 |     uint16_t x_raw, y_raw;
+      |                     ^~~~~
+../Core/Src/main.c:98:14: warning: unused variable 'x_raw' [-Wunused-variable]
+   98 |     uint16_t x_raw, y_raw;
+      |              ^~~~~
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  10716	     20	   1748	  12484	   30c4	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:06:20 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:107:15: warning: implicit declaration of function 'Touch_IsPressed' [-Wimplicit-function-declaration]
+  107 |           if (Touch_IsPressed()) {
+      |               ^~~~~~~~~~~~~~~
+../Core/Src/main.c:108:25: warning: implicit declaration of function 'Touch_GetXY' [-Wimplicit-function-declaration]
+  108 |                     if (Touch_GetXY(&x_raw, &y_raw)) {
+      |                         ^~~~~~~~~~~
+../Core/Src/main.c:110:25: warning: implicit declaration of function 'Update_Number' [-Wimplicit-function-declaration]
+  110 |                         Update_Number(x_raw, 50, 100); // We made this function earlier!
+      |                         ^~~~~~~~~~~~~
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/main.o: in function `main':
+C:/stm32/rfid/rfid/Debug/../Core/Src/main.c:110: undefined reference to `Update_Number'
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/stm32/rfid/rfid/Debug/../Core/Src/main.c:111: undefined reference to `Update_Number'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:88: rfid.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+11:06:41 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:111:25: warning: implicit declaration of function 'Update_Number' [-Wimplicit-function-declaration]
+  111 |                         Update_Number(x_raw, 50, 100); // We made this function earlier!
+      |                         ^~~~~~~~~~~~~
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/main.o: in function `main':
+C:/stm32/rfid/rfid/Debug/../Core/Src/main.c:111: undefined reference to `Update_Number'
+C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/stm32/rfid/rfid/Debug/../Core/Src/main.c:112: undefined reference to `Update_Number'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:88: rfid.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+11:08:20 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  14544	    100	   2084	  16728	   4158	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:13:56 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12136	     20	   1748	  13904	   3650	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:14:55 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12136	     20	   1748	  13904	   3650	rfid.elf
+Finished building: default.size.stdout
+ 
+11:16:42 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+   9988	     12	   1748	  11748	   2de4	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:17:25 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   9988	     12	   1748	  11748	   2de4	rfid.elf
+Finished building: default.size.stdout
+ 
+11:17:47 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   9988	     12	   1748	  11748	   2de4	rfid.elf
+Finished building: default.size.stdout
+ 
+11:19:16 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+   9988	     12	   1748	  11748	   2de4	rfid.elf
+Finished building: default.size.stdout
+ 
+11:20:45 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:131:21: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  131 |                     sprintf(buf, "X: %d   ", raw_x);
+      |                     ^~~~~~~
+../Core/Src/main.c:29:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   28 | #include "touch.h"
+  +++ |+#include <stdio.h>
+   29 | /* USER CODE END Includes */
+../Core/Src/main.c:131:21: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  131 |                     sprintf(buf, "X: %d   ", raw_x);
+      |                     ^~~~~~~
+../Core/Src/main.c:131:21: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  14392	    100	   2084	  16576	   40c0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:21:47 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14392	    100	   2084	  16576	   40c0	rfid.elf
+Finished building: default.size.stdout
+ 
+11:22:32 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:131:21: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  131 |                     sprintf(buf, "X: %d   ", raw_x);
+      |                     ^~~~~~~
+../Core/Src/main.c:29:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   28 | #include "touch.h"
+  +++ |+#include <stdio.h>
+   29 | /* USER CODE END Includes */
+../Core/Src/main.c:131:21: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  131 |                     sprintf(buf, "X: %d   ", raw_x);
+      |                     ^~~~~~~
+../Core/Src/main.c:131:21: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  14388	    100	   2084	  16572	   40bc	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:24:00 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:131:21: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  131 |                     sprintf(buf, "X: %d   ", raw_x);
+      |                     ^~~~~~~
+../Core/Src/main.c:29:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   28 | #include "touch.h"
+  +++ |+#include <stdio.h>
+   29 | /* USER CODE END Includes */
+../Core/Src/main.c:131:21: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  131 |                     sprintf(buf, "X: %d   ", raw_x);
+      |                     ^~~~~~~
+../Core/Src/main.c:131:21: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  14392	    100	   2084	  16576	   40c0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:26:56 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:17: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  113 |                 sprintf(buf, "Sent: 85 (0x55)");
+      |                 ^~~~~~~
+../Core/Src/main.c:29:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   28 | #include "touch.h"
+  +++ |+#include <stdio.h>
+   29 | /* USER CODE END Includes */
+../Core/Src/main.c:113:17: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  113 |                 sprintf(buf, "Sent: 85 (0x55)");
+      |                 ^~~~~~~
+../Core/Src/main.c:113:17: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  14352	    100	   2084	  16536	   4098	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:31:07 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:131:21: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  131 |                     sprintf(buf, "X: %d   ", raw_x);
+      |                     ^~~~~~~
+../Core/Src/main.c:29:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   28 | #include "touch.h"
+  +++ |+#include <stdio.h>
+   29 | /* USER CODE END Includes */
+../Core/Src/main.c:131:21: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  131 |                     sprintf(buf, "X: %d   ", raw_x);
+      |                     ^~~~~~~
+../Core/Src/main.c:131:21: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  14392	    100	   2084	  16576	   40c0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:34:17 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:131:21: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  131 |                     sprintf(buf, "X: %d   ", raw_x);
+      |                     ^~~~~~~
+../Core/Src/main.c:29:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   28 | #include "touch.h"
+  +++ |+#include <stdio.h>
+   29 | /* USER CODE END Includes */
+../Core/Src/main.c:131:21: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  131 |                     sprintf(buf, "X: %d   ", raw_x);
+      |                     ^~~~~~~
+../Core/Src/main.c:131:21: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  14388	    100	   2084	  16572	   40bc	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:35:52 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:110:13: warning: unused variable 'zero_buffer' [-Wunused-variable]
+  110 |     uint8_t zero_buffer[3] = {0,0,0}; // To clock out data
+      |             ^~~~~~~~~~~
+../Core/Src/main.c:108:13: warning: unused variable 'cmd_y' [-Wunused-variable]
+  108 |     uint8_t cmd_y = 0xD0; // Command to read Y
+      |             ^~~~~
+../Core/Src/main.c:107:13: warning: unused variable 'cmd_x' [-Wunused-variable]
+  107 |     uint8_t cmd_x = 0x90; // Command to read X
+      |             ^~~~~
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  14584	    100	   2084	  16768	   4180	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:37:37 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14584	    100	   2084	  16768	   4180	rfid.elf
+Finished building: default.size.stdout
+ 
+11:40:45 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:111:13: warning: unused variable 'zero_buffer' [-Wunused-variable]
+  111 |     uint8_t zero_buffer[3] = {0,0,0}; // To clock out data
+      |             ^~~~~~~~~~~
+../Core/Src/main.c:109:13: warning: unused variable 'cmd_y' [-Wunused-variable]
+  109 |     uint8_t cmd_y = 0xD0; // Command to read Y
+      |             ^~~~~
+../Core/Src/main.c:108:13: warning: unused variable 'cmd_x' [-Wunused-variable]
+  108 |     uint8_t cmd_x = 0x90; // Command to read X
+      |             ^~~~~
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  14696	    100	   2084	  16880	   41f0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:41:44 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  14696	    100	   2084	  16880	   41f0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:44:59 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14696	    100	   2084	  16880	   41f0	rfid.elf
+Finished building: default.size.stdout
+ 
+11:49:11 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12252	     20	   1748	  14020	   36c4	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:52:41 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+In file included from ../Core/Src/main.c:29:
+../Core/Inc/touch.h:14: warning: "ILI9341_WIDTH" redefined
+   14 | #define ILI9341_WIDTH  320
+      | 
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/ili9341.h:17: note: this is the location of the previous definition
+   17 | #define ILI9341_WIDTH  240
+      | 
+../Core/Inc/touch.h:15: warning: "ILI9341_HEIGHT" redefined
+   15 | #define ILI9341_HEIGHT 240
+      | 
+../Core/Inc/ili9341.h:18: note: this is the location of the previous definition
+   18 | #define ILI9341_HEIGHT 320
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12252	     20	   1748	  14020	   36c4	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+11:55:02 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+In file included from ../Core/Src/main.c:29:
+../Core/Inc/touch.h:14: warning: "ILI9341_WIDTH" redefined
+   14 | #define ILI9341_WIDTH  320
+      | 
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/ili9341.h:17: note: this is the location of the previous definition
+   17 | #define ILI9341_WIDTH  240
+      | 
+../Core/Inc/touch.h:15: warning: "ILI9341_HEIGHT" redefined
+   15 | #define ILI9341_HEIGHT 240
+      | 
+../Core/Inc/ili9341.h:18: note: this is the location of the previous definition
+   18 | #define ILI9341_HEIGHT 320
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12248	     20	   1748	  14016	   36c0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+12:09:25 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:29:
+../Core/Inc/touch.h:14: warning: "ILI9341_WIDTH" redefined
+   14 | #define ILI9341_WIDTH  320
+      | 
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/ili9341.h:17: note: this is the location of the previous definition
+   17 | #define ILI9341_WIDTH  240
+      | 
+../Core/Inc/touch.h:15: warning: "ILI9341_HEIGHT" redefined
+   15 | #define ILI9341_HEIGHT 240
+      | 
+../Core/Inc/ili9341.h:18: note: this is the location of the previous definition
+   18 | #define ILI9341_HEIGHT 320
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  11988	     20	   1748	  13756	   35bc	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+12:12:37 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+In file included from ../Core/Src/main.c:29:
+../Core/Inc/touch.h:14: warning: "ILI9341_WIDTH" redefined
+   14 | #define ILI9341_WIDTH  320
+      | 
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/ili9341.h:17: note: this is the location of the previous definition
+   17 | #define ILI9341_WIDTH  240
+      | 
+../Core/Inc/touch.h:15: warning: "ILI9341_HEIGHT" redefined
+   15 | #define ILI9341_HEIGHT 240
+      | 
+../Core/Inc/ili9341.h:18: note: this is the location of the previous definition
+   18 | #define ILI9341_HEIGHT 320
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12056	     20	   1748	  13824	   3600	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+19:30:42 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-size  rfid.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12056	     20	   1748	  13824	   3600	rfid.elf
+Finished building: default.size.stdout
+ 
+19:34:20 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+In file included from ../Core/Src/main.c:29:
+../Core/Inc/touch.h:14: warning: "ILI9341_WIDTH" redefined
+   14 | #define ILI9341_WIDTH  320
+      | 
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/ili9341.h:17: note: this is the location of the previous definition
+   17 | #define ILI9341_WIDTH  240
+      | 
+../Core/Inc/touch.h:15: warning: "ILI9341_HEIGHT" redefined
+   15 | #define ILI9341_HEIGHT 240
+      | 
+../Core/Inc/ili9341.h:18: note: this is the location of the previous definition
+   18 | #define ILI9341_HEIGHT 320
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12208	     20	   1748	  13976	   3698	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+19:37:56 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+In file included from ../Core/Src/main.c:29:
+../Core/Inc/touch.h:14: warning: "ILI9341_WIDTH" redefined
+   14 | #define ILI9341_WIDTH  320
+      | 
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/ili9341.h:17: note: this is the location of the previous definition
+   17 | #define ILI9341_WIDTH  240
+      | 
+../Core/Inc/touch.h:15: warning: "ILI9341_HEIGHT" redefined
+   15 | #define ILI9341_HEIGHT 240
+      | 
+../Core/Inc/ili9341.h:18: note: this is the location of the previous definition
+   18 | #define ILI9341_HEIGHT 320
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12208	     20	   1748	  13976	   3698	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+19:39:18 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+In file included from ../Core/Src/main.c:29:
+../Core/Inc/touch.h:14: warning: "ILI9341_WIDTH" redefined
+   14 | #define ILI9341_WIDTH  320
+      | 
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/ili9341.h:17: note: this is the location of the previous definition
+   17 | #define ILI9341_WIDTH  240
+      | 
+../Core/Inc/touch.h:15: warning: "ILI9341_HEIGHT" redefined
+   15 | #define ILI9341_HEIGHT 240
+      | 
+../Core/Inc/ili9341.h:18: note: this is the location of the previous definition
+   18 | #define ILI9341_HEIGHT 320
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12212	     20	   1748	  13980	   369c	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+19:40:55 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+In file included from ../Core/Src/main.c:29:
+../Core/Inc/touch.h:14: warning: "ILI9341_WIDTH" redefined
+   14 | #define ILI9341_WIDTH  320
+      | 
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/ili9341.h:17: note: this is the location of the previous definition
+   17 | #define ILI9341_WIDTH  240
+      | 
+../Core/Inc/touch.h:15: warning: "ILI9341_HEIGHT" redefined
+   15 | #define ILI9341_HEIGHT 240
+      | 
+../Core/Inc/ili9341.h:18: note: this is the location of the previous definition
+   18 | #define ILI9341_HEIGHT 320
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12208	     20	   1748	  13976	   3698	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+19:51:36 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12256	     20	   1748	  14024	   36c8	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+19:54:43 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12272	     20	   1748	  14040	   36d8	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+19:56:28 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12288	     20	   1748	  14056	   36e8	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+20:00:10 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12308	     20	   1748	  14076	   36fc	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+20:02:17 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12272	     20	   1748	  14040	   36d8	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+20:04:35 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12280	     20	   1748	  14048	   36e0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 

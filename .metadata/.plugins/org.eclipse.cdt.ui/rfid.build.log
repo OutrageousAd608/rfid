@@ -1,0 +1,31 @@
+20:04:35 **** Incremental Build of configuration Debug for project rfid ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/touch.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/touch.d" -MT"Core/Src/touch.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/touch.o"
+In file included from ../Core/Src/touch.c:3:
+../Core/Inc/ili9341.h:17: warning: "ILI9341_WIDTH" redefined
+   17 | #define ILI9341_WIDTH  240
+      | 
+In file included from ../Core/Src/touch.c:1:
+../Core/Inc/touch.h:14: note: this is the location of the previous definition
+   14 | #define ILI9341_WIDTH  320
+      | 
+../Core/Inc/ili9341.h:18: warning: "ILI9341_HEIGHT" redefined
+   18 | #define ILI9341_HEIGHT 320
+      | 
+../Core/Inc/touch.h:15: note: this is the location of the previous definition
+   15 | #define ILI9341_HEIGHT 240
+      | 
+arm-none-eabi-g++ -o "rfid.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: rfid.elf
+ 
+arm-none-eabi-size  rfid.elf 
+arm-none-eabi-objdump -h -S rfid.elf  > "rfid.list"
+   text	   data	    bss	    dec	    hex	filename
+  12280	     20	   1748	  14048	   36e0	rfid.elf
+Finished building: default.size.stdout
+ 
+Finished building: rfid.list
+ 
+
+20:04:36 Build Finished. 0 errors, 2 warnings. (took 984ms)
+

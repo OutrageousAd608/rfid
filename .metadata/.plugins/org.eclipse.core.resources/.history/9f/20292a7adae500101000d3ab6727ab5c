@@ -1,0 +1,88 @@
+#include "touch.h"
+#include "spi.h"
+#include "ili9341.h"
+#include "fonts.h"
+#include <string.h>
+#include <stdlib.h> // For abs()
+
+// XPT2046 Commands
+#define CMD_X_READ  0x90
+#define CMD_Y_READ  0xD0
+
+// --- SORTING HELPER (Bubble Sort) ---
+// Sorts an array of 5 numbers from smallest to largest
+void Sort_Array(uint16_t *arr, uint8_t n) {
+    for (uint8_t i = 0; i < n - 1; i++) {
+        for (uint8_t j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                uint16_t temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+// --- LOW LEVEL READ (Single Sample) ---
+static uint16_t TP_ReadAxis_Raw(uint8_t cmd) {
+    uint8_t data_tx[3] = {cmd, 0x00, 0x00};
+    uint8_t data_rx[3];
+
+    HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_RESET);
+    HAL_SPI_TransmitReceive(&hspi2, data_tx, data_rx, 3, 10);
+    HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET);
+
+    return ((data_rx[1] << 8) | data_rx[2]) >> 3;
+}
+
+// STRONG FILTER: Reads 9 samples, sorts them, picks the center one.
+static uint16_t TP_ReadAxis(uint8_t cmd) {
+    uint16_t samples[9]; // Increased from 5 to 9
+
+    // 1. Take 9 samples
+    for (int i = 0; i < 9; i++) {
+        samples[i] = TP_ReadAxis_Raw(cmd);
+    }
+
+    // 2. Sort them (Bubble Sort for 9 items)
+    Sort_Array(samples, 9);
+
+    // 3. Return the median (Index 4 is the middle of 0-8)
+    return samples[4];
+}
+
+// --- Public Functions ---
+
+uint8_t Touch_IsPressed(void) {
+    return (HAL_GPIO_ReadPin(TOUCH_IRQ_GPIO_Port, TOUCH_IRQ_Pin) == GPIO_PIN_RESET);
+}
+
+uint8_t Touch_GetPixels(uint16_t *x, uint16_t *y) {
+    if (!Touch_IsPressed()) return 0;
+
+    // 1. Read Filtered Data
+    uint16_t raw_x = TP_ReadAxis(CMD_X_READ);
+    uint16_t raw_y = TP_ReadAxis(CMD_Y_READ);
+
+    // Filter extreme noise
+    if (raw_x < 100 || raw_y < 100) return 0;
+
+    // 2. CALIBRATION LOGIC
+    // We use the constants from touch.h
+
+    // X CALCULATION
+    if (raw_x < RAW_X_MIN) raw_x = RAW_X_MIN;
+    if (raw_x > RAW_X_MAX) raw_x = RAW_X_MAX;
+
+    *y = (uint32_t)(raw_x - RAW_X_MIN) * ILI9341_HEIGHT / (RAW_X_MAX - RAW_X_MIN);
+
+    // Y CALCULATION (Inverted)
+    if (raw_y < RAW_Y_MIN) raw_y = RAW_Y_MIN;
+    if (raw_y > RAW_Y_MAX) raw_y = RAW_Y_MAX;
+
+    *x = ILI9341_WIDTH - ((uint32_t)(raw_y - RAW_Y_MIN) * ILI9341_WIDTH / (RAW_Y_MAX - RAW_Y_MIN));
+
+    return 1;
+}
+
+// ... Keep your Button_IsPressed and Button_Draw functions same as before ...

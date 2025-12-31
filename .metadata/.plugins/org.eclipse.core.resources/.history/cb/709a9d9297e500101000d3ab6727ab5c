@@ -1,0 +1,58 @@
+#include "touch.h"
+#include "spi.h"
+
+#define CMD_X_READ  0x90
+#define CMD_Y_READ  0xD0
+
+// Low-level SPI read
+uint16_t TP_ReadAxis(uint8_t cmd) {
+    uint8_t data_tx[3] = {cmd, 0x00, 0x00};
+    uint8_t data_rx[3];
+
+    HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_RESET);
+    HAL_SPI_TransmitReceive(&hspi2, data_tx, data_rx, 3, 10);
+    HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET);
+
+    return ((data_rx[1] << 8) | data_rx[2]) >> 3;
+}
+
+uint8_t Touch_IsPressed(void) {
+    return (HAL_GPIO_ReadPin(TOUCH_IRQ_GPIO_Port, TOUCH_IRQ_Pin) == GPIO_PIN_RESET);
+}
+
+// THE FIXED MAPPING FUNCTION
+uint8_t Touch_GetPixels(uint16_t *x, uint16_t *y) {
+    if (!Touch_IsPressed()) return 0;
+
+    // 1. Read Raw Data
+    uint16_t raw_x = TP_ReadAxis(CMD_X_READ);
+    uint16_t raw_y = TP_ReadAxis(CMD_Y_READ);
+
+    // Filter noise (if 0 or 4095, ignore)
+    if (raw_x < 100 || raw_y < 100) return 0;
+
+    // 2. Calculate Screen Y (Vertical) using RAW X
+    // Range: 400 (Top) to 3500 (Bottom)
+    if (raw_x < RAW_X_MIN) raw_x = RAW_X_MIN;
+    if (raw_x > RAW_X_MAX) raw_x = RAW_X_MAX;
+
+    *y = (uint32_t)(raw_x - RAW_X_MIN) * ILI9341_HEIGHT / (RAW_X_MAX - RAW_X_MIN);
+
+    // 3. Calculate Screen X (Horizontal) using RAW Y
+    // Range: 3500 (Left) to 600 (Right) -> INVERTED!
+    if (raw_y < RAW_Y_MIN) raw_y = RAW_Y_MIN;
+    if (raw_y > RAW_Y_MAX) raw_y = RAW_Y_MAX;
+
+    // Since 3500 is Left (0) and 600 is Right (240), we reverse the mapping:
+    *x = ILI9341_WIDTH - ((uint32_t)(raw_y - RAW_Y_MIN) * ILI9341_WIDTH / (RAW_Y_MAX - RAW_Y_MIN));
+
+    return 1;
+}
+
+uint8_t Button_IsPressed(ButtonDef button, uint16_t touch_x, uint16_t touch_y) {
+    if (touch_x >= button.x && touch_x <= (button.x + button.width) &&
+        touch_y >= button.y && touch_y <= (button.y + button.height)) {
+        return 1;
+    }
+    return 0;
+}

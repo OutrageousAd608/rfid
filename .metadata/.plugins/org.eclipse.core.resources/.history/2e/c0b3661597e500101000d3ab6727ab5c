@@ -1,0 +1,66 @@
+#include "touch.h"
+#include "spi.h"
+#include "ili9341.h" // Needed to know Screen Width/Height
+
+// Commands
+#define CMD_X_READ  0x90
+#define CMD_Y_READ  0xD0
+
+// --- Low Level SPI Helper ---
+uint16_t TP_ReadAxis(uint8_t cmd) {
+    uint8_t data_tx[3] = {cmd, 0x00, 0x00};
+    uint8_t data_rx[3];
+
+    HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_RESET);
+    HAL_SPI_TransmitReceive(&hspi2, data_tx, data_rx, 3, 10);
+    HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET);
+
+    return ((data_rx[1] << 8) | data_rx[2]) >> 3;
+}
+
+// --- Public Functions ---
+
+uint8_t Touch_IsPressed(void) {
+    return (HAL_GPIO_ReadPin(TOUCH_IRQ_GPIO_Port, TOUCH_IRQ_Pin) == GPIO_PIN_RESET);
+}
+
+// Converts Raw Touch (0-4095) to Screen Pixels (0-240 / 0-320)
+uint8_t Touch_GetPixels(uint16_t *x, uint16_t *y) {
+    if (!Touch_IsPressed()) return 0;
+
+    uint16_t raw_x = TP_ReadAxis(CMD_X_READ);
+    uint16_t raw_y = TP_ReadAxis(CMD_Y_READ);
+
+    // 1. Noise Filter
+    if (raw_x < 100 || raw_y < 100) return 0;
+
+    // 2. Map X (Horizontal)
+    // Formula: Pixel = (Raw - Min) * Width / (Max - Min)
+    if(raw_x > TOUCH_X_MIN) raw_x -= TOUCH_X_MIN; else raw_x = 0;
+
+    uint32_t x_calc = (uint32_t)raw_x * ILI9341_WIDTH / (TOUCH_X_MAX - TOUCH_X_MIN);
+    if (x_calc > ILI9341_WIDTH) x_calc = ILI9341_WIDTH;
+
+    // 3. Map Y (Vertical)
+    if(raw_y > TOUCH_Y_MIN) raw_y -= TOUCH_Y_MIN; else raw_y = 0;
+
+    uint32_t y_calc = (uint32_t)raw_y * ILI9341_HEIGHT / (TOUCH_Y_MAX - TOUCH_Y_MIN);
+    if (y_calc > ILI9341_HEIGHT) y_calc = ILI9341_HEIGHT;
+
+    // 4. Orientation Correction
+    // (Depending on your screen, you might need to invert these)
+    // Usually X is mirrored on these cheap screens:
+    *x = ILI9341_WIDTH - x_calc;
+    *y = y_calc;
+
+    return 1;
+}
+
+// Checks if a touch coordinate is inside a button's box
+uint8_t Button_IsPressed(ButtonDef button, uint16_t touch_x, uint16_t touch_y) {
+    if (touch_x >= button.x && touch_x <= (button.x + button.width) &&
+        touch_y >= button.y && touch_y <= (button.y + button.height)) {
+        return 1; // True
+    }
+    return 0; // False
+}

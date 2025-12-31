@@ -1,0 +1,55 @@
+#include "touch.h"
+#include "spi.h" // We need hspi2 now
+
+// Commands for the XPT2046
+#define CMD_X_READ  0x90 // Read Y position (Yes, the axes are often swapped on these chips)
+#define CMD_Y_READ  0xD0 // Read X position
+
+// Internal Helper: Send a command and read the result
+uint16_t TP_ReadAxis(uint8_t cmd) {
+    uint8_t data_tx[3];
+    uint8_t data_rx[3];
+    uint16_t result;
+
+    // 1. Select the Touch Chip
+    HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_RESET);
+
+    // 2. Prepare Data: Command byte followed by 0x00, 0x00 to clock out response
+    data_tx[0] = cmd;
+    data_tx[1] = 0x00;
+    data_tx[2] = 0x00;
+
+    // 3. Transmit and Receive simultaneously
+    HAL_SPI_TransmitReceive(&hspi2, data_tx, data_rx, 3, 10);
+
+    // 4. Deselect
+    HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET);
+
+    // 5. Process Result (12-bit value is in byte 1 and top of byte 2)
+    result = ((data_rx[1] << 8) | data_rx[2]) >> 3;
+
+    return result;
+}
+
+uint8_t Touch_IsPressed(void) {
+    // The IRQ pin goes LOW when pressed
+    if (HAL_GPIO_ReadPin(TOUCH_IRQ_GPIO_Port, TOUCH_IRQ_Pin) == GPIO_PIN_RESET) {
+        return 1;
+    }
+    return 0;
+}
+
+uint8_t Touch_GetXY(uint16_t *x, uint16_t *y) {
+    if (!Touch_IsPressed()) return 0;
+
+    // Read multiple times to filter out noise
+    uint16_t raw_x = TP_ReadAxis(CMD_X_READ);
+    uint16_t raw_y = TP_ReadAxis(CMD_Y_READ);
+
+    // Simple noise check: valid range is roughly 200 to 3900
+    if (raw_x < 100 || raw_x > 4000 || raw_y < 100 || raw_y > 4000) return 0;
+
+    *x = raw_x;
+    *y = raw_y;
+    return 1;
+}
