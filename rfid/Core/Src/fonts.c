@@ -1,12 +1,23 @@
+/**
+  ******************************************************************************
+  * @file    fonts.c
+  * @brief   Implementation of Font Library and Rendering Logic.
+  ******************************************************************************
+  */
+
 #include "fonts.h"
 #include "ili9341.h"
 
-// Global cursor position
+// --- GLOBAL CURSOR POSITION ---
+// Tracks where the next character will be drawn
 uint16_t LCD_CurrentX = 0;
 uint16_t LCD_CurrentY = 0;
 
-// --- 7x10 Font Data (ASCII 32 to 126) ---
+// --- 7x10 FONT DATA (ASCII 32 to 126) ---
+// Each character is 7 pixels wide.
+// Values represent vertical columns (LSB is top pixel).
 const uint16_t Font7x10_Data[] = {
+    // ... (Standard ASCII Map 32-126) ...
     // ASCII 32 - 47 (Space and Symbols)
     0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, // Space
     0x0000, 0x0000, 0x0006, 0x005F, 0x0006, 0x0000, 0x0000, // !
@@ -119,6 +130,8 @@ const uint16_t Font7x10_Data[] = {
 
 FontDef Font_7x10 = {7, 10, Font7x10_Data};
 
+// --- DRAWING FUNCTIONS ---
+
 void LCD_WriteChar(char ch, FontDef font, uint16_t color, uint16_t bgcolor) {
     uint32_t i, j;
 
@@ -143,14 +156,15 @@ void LCD_WriteChar(char ch, FontDef font, uint16_t color, uint16_t bgcolor) {
 void LCD_WriteString(const char* str, uint16_t x, uint16_t y, FontDef font, uint16_t color, uint16_t bgcolor) {
     LCD_CurrentX = x;
     LCD_CurrentY = y;
+    
     while (*str) {
-
         if (*str == '\n') {
             LCD_CurrentY += font.height;
             LCD_CurrentX = x;
             str++;
             continue;
         }
+        
         LCD_WriteChar(*str, font, color, bgcolor);
         str++;
     }

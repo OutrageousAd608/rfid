@@ -1,13 +1,26 @@
+/**
+  ******************************************************************************
+  * @file    touch.c
+  * @brief   Implementation for XPT2046 Touch Controller.
+  * Includes oversampling and median filtering.
+  ******************************************************************************
+  */
+
 #include "touch.h"
 #include "spi.h"
 #include "ili9341.h"
 #include "fonts.h"
-#include <string.h>
+#include <string.h> 
 
-// XPT2046 Commands
+// XPT2046 SPI Commands
 #define CMD_X_READ  0x90
 #define CMD_Y_READ  0xD0
 
+// Hardware dimensions for mapping logic
+#define TOUCH_WIDTH  240
+#define TOUCH_HEIGHT 320
+
+/* Simple bubble sort for the median filter */
 static void Sort_Array(uint16_t *arr, uint8_t n) {
     for (uint8_t i = 1; i < n; i++) {
         uint16_t key = arr[i];
@@ -20,6 +33,7 @@ static void Sort_Array(uint16_t *arr, uint8_t n) {
     }
 }
 
+/* Reads a single raw axis value from the XPT2046 over SPI */
 static uint16_t TP_ReadAxis_Raw(uint8_t cmd) {
     uint8_t data_tx[3] = {cmd, 0x00, 0x00};
     uint8_t data_rx[3];
@@ -31,6 +45,7 @@ static uint16_t TP_ReadAxis_Raw(uint8_t cmd) {
     return ((data_rx[1] << 8) | data_rx[2]) >> 3;
 }
 
+/* Oversamples and filters readings to reduce noise */
 static uint16_t TP_ReadAxis(uint8_t cmd) {
     uint16_t samples[16];
     uint32_t total = 0;
@@ -40,11 +55,12 @@ static uint16_t TP_ReadAxis(uint8_t cmd) {
     }
 
     Sort_Array(samples, 16);
-
+    
+    // Discard upper/lower outliers, average the middle
     for (int i = 4; i < 12; i++) {
         total += samples[i];
     }
-
+    
     return total / 8;
 }
 
@@ -53,54 +69,54 @@ uint8_t Touch_IsPressed(void) {
 }
 
 uint8_t Touch_GetPixels(uint16_t *x, uint16_t *y) {
-
     if (!Touch_IsPressed()) return 0;
 
-    HAL_Delay(20);
+    HAL_Delay(20); // Debounce
 
     if (!Touch_IsPressed()) return 0;
 
     uint16_t raw_x = TP_ReadAxis(CMD_X_READ);
     uint16_t raw_y = TP_ReadAxis(CMD_Y_READ);
 
+    // Filter out edge noise
     if (raw_x < 50 || raw_x > 4050) return 0;
     if (raw_y < 50 || raw_y > 4050) return 0;
 
+    // Clamp to calibration limits
     if (raw_x < RAW_X_MIN) raw_x = RAW_X_MIN;
     if (raw_x > RAW_X_MAX) raw_x = RAW_X_MAX;
-
-    *y = (uint32_t)(raw_x - RAW_X_MIN) * ILI9341_HEIGHT / (RAW_X_MAX - RAW_X_MIN);
+    
+    // Map raw values to screen pixels (Rotation logic included)
+    *y = (uint32_t)(raw_x - RAW_X_MIN) * TOUCH_HEIGHT / (RAW_X_MAX - RAW_X_MIN);
 
     if (raw_y < RAW_Y_MIN) raw_y = RAW_Y_MIN;
     if (raw_y > RAW_Y_MAX) raw_y = RAW_Y_MAX;
 
-    *x = ILI9341_WIDTH - ((uint32_t)(raw_y - RAW_Y_MIN) * ILI9341_WIDTH / (RAW_Y_MAX - RAW_Y_MIN));
+    *x = TOUCH_WIDTH - ((uint32_t)(raw_y - RAW_Y_MIN) * TOUCH_WIDTH / (RAW_Y_MAX - RAW_Y_MIN));
 
     return 1;
 }
 
 uint8_t Button_IsPressed(ButtonDef button, uint16_t touch_x, uint16_t touch_y) {
-
     if (touch_x >= button.x && touch_x <= (button.x + button.width) &&
         touch_y >= button.y && touch_y <= (button.y + button.height)) {
         return 1;
     }
     return 0;
-
 }
 
 void Button_Draw(ButtonDef *btn, const char* label, uint16_t color, uint16_t text_color) {
-    
     LCD_FillRect(btn->x, btn->y, btn->width, btn->height, color);
 
     uint16_t text_len = strlen(label) * 7;
     uint16_t x_center;
+    
     if (text_len < btn->width) {
         x_center = btn->x + (btn->width - text_len) / 2;
     } else {
-        x_center = btn->x + 2;
+        x_center = btn->x + 2; 
     }
+    
     uint16_t y_center = btn->y + (btn->height - 10) / 2;
     LCD_WriteString(label, x_center, y_center, Font_7x10, text_color, color);
-    
 }

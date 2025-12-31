@@ -27,6 +27,7 @@
 #include "ili9341.h"
 #include "fonts.h"
 #include "touch.h"
+#include "ui.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,14 +94,10 @@ int main(void)
   MX_SPI1_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-  LCD_Init();
-    LCD_FillColor(BLACK);
-
-    // Draw the Blue Box for reference
-    LCD_FillRect(40, 100, 160, 60, BLUE);
-    LCD_WriteString("TARGET", 80, 120, Font_7x10, WHITE, BLUE);
-
-    uint16_t px, py;
+  UI_Init();
+  UI_Draw_Boot_Sequence(); // The cool startup animation
+  
+  uint16_t px, py;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,10 +107,22 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  if (Touch_GetPixels(&px, &py)) {
-	            // Draw a small white dot at the calculated position
-	            LCD_FillRect(px, py, 2, 2, WHITE);
-	        }
+	  // 1. Draw UI (if changed)
+      UI_Refresh();
+      
+      // 2. Animate elements (if needed)
+      UI_Update_Dynamic_Elements();
+
+      // 3. Handle Input
+      if (Touch_GetPixels(&px, &py)) {
+          UI_Handle_Touch(px, py);
+          HAL_Delay(50); // Small debounce for page switching
+      }
+      
+      // 4. Handle Hardware Logic
+      if (currentState == PAGE_RX_SENSING) {
+          // Listen for signals...
+      }
 
   }
   /* USER CODE END 3 */

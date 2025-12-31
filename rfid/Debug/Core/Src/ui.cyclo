@@ -1,0 +1,15 @@
+../Core/Src/ui.c:70:13:UI_DrawRect	1
+../Core/Src/ui.c:78:13:Draw_Terminal_Button_State	5
+../Core/Src/ui.c:108:13:Draw_Terminal_Button	1
+../Core/Src/ui.c:113:13:Flash_Button	5
+../Core/Src/ui.c:138:13:Draw_Keyboard_Static	6
+../Core/Src/ui.c:174:13:Update_Input_Display	1
+../Core/Src/ui.c:184:13:Check_Keyboard_Touch	9
+../Core/Src/ui.c:220:5:Find_Free_Slot	3
+../Core/Src/ui.c:227:5:Get_Total_Active_Signals	3
+../Core/Src/ui.c:235:6:Delete_Signal	4
+../Core/Src/ui.c:252:6:UI_Init	1
+../Core/Src/ui.c:259:6:UI_Draw_Boot_Sequence	2
+../Core/Src/ui.c:271:6:UI_Refresh	19
+../Core/Src/ui.c:385:6:UI_Update_Dynamic_Elements	11
+../Core/Src/ui.c:429:6:UI_Handle_Touch	42
