@@ -38,12 +38,14 @@ extern uint8_t ui_needs_update;
 // --- DATABASE CONFIG ---
 #define MAX_SLOTS 15      // Max signals stored
 #define NAME_LEN  10      // Max chars per name
+#define MAX_SIG_LEN 512   // Max edges per signal
 
 // --- SIGNAL STRUCTURE ---
 typedef struct {
     char name[NAME_LEN + 1]; 
     uint8_t is_active;       // 1 = Occupied, 0 = Empty
-    uint32_t protocol_data;  // Placeholder for real physics data
+    uint16_t length;         // Actual number of edges recorded
+    uint32_t timings[MAX_SIG_LEN]; // The actual waveform data
 } Signal;
 
 // Shared Global Data
