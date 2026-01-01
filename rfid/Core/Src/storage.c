@@ -29,6 +29,7 @@ void Storage_SaveSignals(void) {
     }
 
     // 2. Program Data (Byte by Byte)
+    // Note: With larger RFID buffers, this loop will take longer.
     uint8_t *data_ptr = (uint8_t *)signal_db;
     uint32_t address = FLASH_STORAGE_ADDR;
 

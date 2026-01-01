@@ -24,11 +24,11 @@
 typedef enum {
     PAGE_BOOT,            // Startup animation
     PAGE_MAIN,            // Root menu
-    PAGE_TX_LIST,         // Saved signals list
-    PAGE_OPTIONS,         // Signal details (Tx/Rename/Delete)
+    PAGE_LIST,            // Saved signals list
+    PAGE_OPTIONS,         // Signal details
     PAGE_CONFIRM_DELETE,  // Safety check
-    PAGE_TRANSMITTING,    // Active output
-    PAGE_RX_SENSING,      // Active sniffing
+    PAGE_EMULATING,       // Active output (Replaces TRANSMITTING)
+    PAGE_READING,         // Active sniffing (Replaces RX_SENSING)
     PAGE_KEYBOARD         // Text entry
 } AppState;
 
@@ -36,14 +36,16 @@ extern AppState currentState;
 extern uint8_t ui_needs_update;
 
 // --- DATABASE CONFIG ---
-#define MAX_SLOTS 15      // Max signals stored
+#define MAX_SLOTS 10      // Reduced slot count due to larger signal size
 #define NAME_LEN  10      // Max chars per name
+#define MAX_SAMPLES 2048  // Matches RFID_BUFFER_SIZE
 
 // --- SIGNAL STRUCTURE ---
 typedef struct {
     char name[NAME_LEN + 1]; 
-    uint8_t is_active;       // 1 = Occupied, 0 = Empty
-    uint32_t protocol_data;  // Placeholder for real physics data
+    uint8_t is_active;           // 1 = Occupied, 0 = Empty
+    uint16_t length;             // Actual number of samples recorded
+    uint32_t raw_data[MAX_SAMPLES]; // Raw comparator timings
 } Signal;
 
 // Shared Global Data
