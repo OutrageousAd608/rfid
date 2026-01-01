@@ -1,8 +1,0 @@
-../Core/Src/ili9341.c:13:6:LCD_WriteCommand	1
-../Core/Src/ili9341.c:20:6:LCD_WriteData	1
-../Core/Src/ili9341.c:27:6:LCD_WriteData16	1
-../Core/Src/ili9341.c:37:6:LCD_SetAddress	1
-../Core/Src/ili9341.c:49:6:LCD_Init	1
-../Core/Src/ili9341.c:86:6:LCD_DrawPixel	3
-../Core/Src/ili9341.c:93:6:LCD_FillRect	4
-../Core/Src/ili9341.c:112:6:LCD_FillColor	1
