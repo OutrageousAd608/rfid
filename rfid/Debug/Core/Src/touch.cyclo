@@ -1,7 +1,0 @@
-../Core/Src/touch.c:24:13:Sort_Array	4
-../Core/Src/touch.c:37:17:TP_ReadAxis_Raw	1
-../Core/Src/touch.c:49:17:TP_ReadAxis	3
-../Core/Src/touch.c:67:9:Touch_IsPressed	1
-../Core/Src/touch.c:71:9:Touch_GetPixels	11
-../Core/Src/touch.c:100:9:Button_IsPressed	5
-../Core/Src/touch.c:108:6:Button_Draw	2
