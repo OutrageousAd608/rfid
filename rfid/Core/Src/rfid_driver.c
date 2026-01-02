@@ -2,19 +2,36 @@
   ******************************************************************************
   * @file    rfid_driver.c
   * @brief   Implementation of low-level RFID hardware control.
+  * - RX: Input Capture on PA0 (TIM2)
+  * - TX: FSK Modulated PWM on PA6 (TIM3)
   ******************************************************************************
   */
 
 #include "rfid_driver.h"
-#include "tim.h" // Ensure TIM2 (RX) and TIM3 (TX) are configured in .ioc
+#include "tim.h" 
 
 volatile RFID_State rfid_state;
+
+// --- HARDWARE TUNING (STM32F401RE @ 84MHz) ---
+
+// Frequency 0: 125.0 kHz (Idle / Logic 0)
+// Calculation: 84,000,000 / 125,000 = 672 ticks. (ARR = 672 - 1)
+#define RFID_ARR_125K    671 
+
+// Frequency 1: 134.2 kHz (Active / Logic 1)
+// Calculation: 84,000,000 / 134,200 = 626 ticks. (ARR = 626 - 1)
+#define RFID_ARR_134K    625
+
+// Pulse Width: 2.0 microseconds (Class-C Driver Optimization)
+// Calculation: 2us * 84MHz = 168 ticks.
+// This fixed width maintains stable resonance without damping the tank circuit.
+#define RFID_PULSE_WIDTH 168
 
 // --- HELPER FUNCTIONS ---
 
 /**
  * @brief  Blocking delay using TIM2 ticks for precise emulation timing.
- * @param  ticks: Number of timer ticks (usually microseconds) to wait.
+ * @param  ticks: Number of timer ticks (microseconds) to wait.
  */
 static void delay_tim_ticks(uint32_t ticks) {
     uint32_t start = __HAL_TIM_GET_COUNTER(&htim2);
@@ -63,7 +80,13 @@ void RFID_Read_Stop(void) {
 // --- TRANSMITTER LOGIC (125kHz Carrier Generation) ---
 
 void RFID_Carrier_On(void) {
-    // Starts the 125kHz Square Wave on PA6 (TIM3 CH1)
+    // 1. Set Base Frequency (125kHz)
+    __HAL_TIM_SET_AUTORELOAD(&htim3, RFID_ARR_125K);
+
+    // 2. Set Fixed Pulse Width (2us) for Class-C Resonance
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, RFID_PULSE_WIDTH);
+
+    // 3. Start the PWM on PA6
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 }
 
@@ -77,21 +100,33 @@ void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
     // Ensure Base Timer is running for our delay function
     HAL_TIM_Base_Start(&htim2);
 
+    // Turn on the carrier to begin Active Emulation
+    RFID_Carrier_On();
+
     for (uint16_t i = 0; i < length; i++) {
-        // Simple Modulation Logic (ASK Example)
-        // For FSK, this logic would adjust the PWM Prescaler instead of ON/OFF.
+        // FSK Modulation Logic:
+        // Instead of turning the carrier OFF (ASK), we shift the frequency.
+        // Even Index = Logic 0 (125 kHz)
+        // Odd Index  = Logic 1 (134 kHz)
+        
+        uint32_t target_arr;
 
         if (i % 2 == 0) {
-            RFID_Carrier_On();
+            target_arr = RFID_ARR_125K;
         } else {
-            RFID_Carrier_Off();
+            target_arr = RFID_ARR_134K;
         }
 
+        // Update the Timer Period to shift the carrier frequency
+        __HAL_TIM_SET_AUTORELOAD(&htim3, target_arr);
+
+        // Hold this frequency for the recorded duration
         delay_tim_ticks(timings[i]);
     }
 
     // Cleanup
     RFID_Carrier_Off();
+    HAL_TIM_Base_Stop(&htim2);
     rfid_state.is_busy = 0;
 }
 
@@ -109,8 +144,6 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
     }
 
     // Capture the period (Time since last edge)
-    // This value represents the Frequency.
-    // Short period = Logic 0, Long period = Logic 1 (for FSK decoding).
     uint32_t val = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
 
     // Reset counter for the next measurement (Differential measurement)
@@ -124,8 +157,6 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
 uint8_t RFID_Process(void) {
     // Check if the interrupt handler marked the capture as complete
     if (rfid_state.data_ready) return 1;
-
-    // (Optional) Add silence timeout logic here if needed
 
     return 0;
 }
