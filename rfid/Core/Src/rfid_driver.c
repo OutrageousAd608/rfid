@@ -104,24 +104,32 @@ void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
     RFID_Carrier_On();
 
     for (uint16_t i = 0; i < length; i++) {
-        // FSK Modulation Logic:
-        // Instead of turning the carrier OFF (ASK), we shift the frequency.
-        // Even Index = Logic 0 (125 kHz)
-        // Odd Index  = Logic 1 (134 kHz)
+        // --- LOGIC FIX: THRESHOLD DETECTION ---
+        // We look at the recorded timing to decide which frequency to shout.
+        // Threshold = 650 ticks (approx midpoint between 125kHz and 134kHz)
         
+        uint32_t recorded_period = timings[i];
         uint32_t target_arr;
 
-        if (i % 2 == 0) {
+        // Sanity Check: If noise gives us a crazy value, default to Idle (125k)
+        if (recorded_period > 1000 || recorded_period < 100) {
+             target_arr = RFID_ARR_125K;
+        }
+        // If the recorded wave was "Long" (>650 ticks), it's 125kHz
+        else if (recorded_period > 650) {
             target_arr = RFID_ARR_125K;
-        } else {
+        } 
+        // If the recorded wave was "Short" (<650 ticks), it's 134kHz
+        else {
             target_arr = RFID_ARR_134K;
         }
 
-        // Update the Timer Period to shift the carrier frequency
+        // 1. Set the Frequency
         __HAL_TIM_SET_AUTORELOAD(&htim3, target_arr);
 
-        // Hold this frequency for the recorded duration
-        delay_tim_ticks(timings[i]);
+        // 2. Wait for the exact duration of that wave
+        // This reproduces the "rhythm" of the original signal perfectly.
+        delay_tim_ticks(recorded_period);
     }
 
     // Cleanup
