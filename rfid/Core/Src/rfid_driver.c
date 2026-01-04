@@ -8,7 +8,8 @@
   */
 
 #include "rfid_driver.h"
-#include "tim.h" 
+#include "tim.h"
+#include "touch.h"
 
 volatile RFID_State rfid_state;
 
@@ -97,45 +98,52 @@ void RFID_Carrier_Off(void) {
 void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
     rfid_state.is_busy = 1;
 
-    // Ensure Base Timer is running for our delay function
-    HAL_TIM_Base_Start(&htim2);
+    // 1. Prepare Timers
+    HAL_TIM_Base_Start(&htim2); // Used for microsecond delays
+    
+    // CRITICAL: Set Carrier to 125kHz (Do not switch to 134k)
+    __HAL_TIM_SET_AUTORELOAD(&htim3, RFID_ARR_125K);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, RFID_PULSE_WIDTH);
 
-    // Turn on the carrier to begin Active Emulation
-    RFID_Carrier_On();
-
-    for (uint16_t i = 0; i < length; i++) {
-        // --- LOGIC FIX: THRESHOLD DETECTION ---
-        // We look at the recorded timing to decide which frequency to shout.
-        // Threshold = 650 ticks (approx midpoint between 125kHz and 134kHz)
+    // 2. The Infinite Loop (Until User Touches Screen)
+    // We check Touch_IsPressed() to allow the user to cancel.
+    while (!Touch_IsPressed()) {
         
-        uint32_t recorded_period = timings[i];
-        uint32_t target_arr;
+        // --- PLAYBACK LOOP (The "Tape Recorder") ---
+        for (uint16_t i = 0; i < length; i++) {
+            uint32_t period = timings[i];
 
-        // Sanity Check: If noise gives us a crazy value, default to Idle (125k)
-        if (recorded_period > 1000 || recorded_period < 100) {
-             target_arr = RFID_ARR_125K;
+            // Sanity Check: Ignore noise spikes or massive silence gaps
+            // (Adjust these limits if your capture data looks different)
+            if (period < 100 || period > 50000) continue; 
+
+            // --- BURST EMULATION (OOK) ---
+            // ioProx expects FSK (ripples). We create ripples by 
+            // toggling our 125kHz carrier ON and OFF.
+
+            // A. Carrier ON (Loud) for 50% of the duration
+            HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); 
+            delay_tim_ticks(period / 2);
+
+            // B. Carrier OFF (Silent) for 50% of the duration
+            HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
+            delay_tim_ticks(period / 2);
         }
-        // If the recorded wave was "Long" (>650 ticks), it's 125kHz
-        else if (recorded_period > 650) {
-            target_arr = RFID_ARR_125K;
-        } 
-        // If the recorded wave was "Short" (<650 ticks), it's 134kHz
-        else {
-            target_arr = RFID_ARR_134K;
-        }
 
-        // 1. Set the Frequency
-        __HAL_TIM_SET_AUTORELOAD(&htim3, target_arr);
-
-        // 2. Wait for the exact duration of that wave
-        // This reproduces the "rhythm" of the original signal perfectly.
-        delay_tim_ticks(recorded_period);
+        // --- INTER-MESSAGE GAP ---
+        // Real tags have a brief silence or steady carrier between repeats.
+        // We leave the Carrier ON (Unmodulated) for 15ms to let the Reader sync.
+        HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+        HAL_Delay(15); 
     }
 
-    // Cleanup
+    // 3. Cleanup (Stop everything when loop breaks)
     RFID_Carrier_Off();
     HAL_TIM_Base_Stop(&htim2);
     rfid_state.is_busy = 0;
+    
+    // Small delay to clear the touch press so it doesn't trigger a button on the previous menu
+    HAL_Delay(300); 
 }
 
 // --- INTERRUPT HANDLER (RX) ---
