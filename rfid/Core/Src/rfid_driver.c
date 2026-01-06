@@ -101,48 +101,47 @@ void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
     // 1. Prepare Timers
     HAL_TIM_Base_Start(&htim2); // Used for microsecond delays
     
-    // CRITICAL: Set Carrier to 125kHz (Do not switch to 134k)
+    // START the PWM peripheral, but set Pulse to 0 initially (Transistor Open)
     __HAL_TIM_SET_AUTORELOAD(&htim3, RFID_ARR_125K);
-    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, RFID_PULSE_WIDTH);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0); 
+    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 
     // 2. The Infinite Loop (Until User Touches Screen)
-    // We check Touch_IsPressed() to allow the user to cancel.
     while (!Touch_IsPressed()) {
         
         // --- PLAYBACK LOOP (The "Tape Recorder") ---
         for (uint16_t i = 0; i < length; i++) {
             uint32_t period = timings[i];
 
-            // Sanity Check: Ignore noise spikes or massive silence gaps
-            // (Adjust these limits if your capture data looks different)
+            // Sanity Check
             if (period < 100 || period > 50000) continue; 
 
-            // --- BURST EMULATION (OOK) ---
-            // ioProx expects FSK (ripples). We create ripples by 
-            // toggling our 125kHz carrier ON and OFF.
-
-            // A. Carrier ON (Loud) for 50% of the duration
-            HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); 
+            // --- PASSIVE LOAD MODULATION (The Fix) ---
+            // Instead of turning the 125kHz Carrier ON/OFF, we toggle the "Short Circuit".
+            
+            // A. LOGIC HIGH (Short the Coil)
+            // Set Duty Cycle to > 100% (Value larger than ARR)
+            // This forces the MOSFET ON continuously.
+            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, RFID_ARR_125K + 1);
             delay_tim_ticks(period / 2);
 
-            // B. Carrier OFF (Silent) for 50% of the duration
-            HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
+            // B. LOGIC LOW (Open the Coil)
+            // Set Duty Cycle to 0%
+            // This forces the MOSFET OFF continuously.
+            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
             delay_tim_ticks(period / 2);
         }
 
         // --- INTER-MESSAGE GAP ---
-        // Real tags have a brief silence or steady carrier between repeats.
-        // We leave the Carrier ON (Unmodulated) for 15ms to let the Reader sync.
-        HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+        // Release the coil (0% Duty) to let the reader recover
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
         HAL_Delay(15); 
     }
 
-    // 3. Cleanup (Stop everything when loop breaks)
-    RFID_Carrier_Off();
+    // 3. Cleanup
+    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1); // Completely stop the timer
     HAL_TIM_Base_Stop(&htim2);
     rfid_state.is_busy = 0;
-    
-    // Small delay to clear the touch press so it doesn't trigger a button on the previous menu
     HAL_Delay(300); 
 }
 
