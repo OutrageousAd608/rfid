@@ -99,7 +99,7 @@ void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
     rfid_state.is_busy = 1;
 
     // 1. Prepare Timers
-    HAL_TIM_Base_Start(&htim2); // Used for microsecond delays
+    HAL_TIM_Base_Start(&htim2); 
     
     // START the PWM peripheral, but set Pulse to 0 initially (Transistor Open)
     __HAL_TIM_SET_AUTORELOAD(&htim3, RFID_ARR_125K);
@@ -109,6 +109,10 @@ void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
     // 2. The Infinite Loop (Until User Touches Screen)
     while (!Touch_IsPressed()) {
         
+        // --- CRITICAL SECTION START ---
+        // We disable interrupts to prevent SysTick from glitching our signal
+        __disable_irq(); 
+
         // --- PLAYBACK LOOP (The "Tape Recorder") ---
         for (uint16_t i = 0; i < length; i++) {
             uint32_t period = timings[i];
@@ -116,30 +120,27 @@ void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
             // Sanity Check
             if (period < 100 || period > 50000) continue; 
 
-            // --- PASSIVE LOAD MODULATION (The Fix) ---
-            // Instead of turning the 125kHz Carrier ON/OFF, we toggle the "Short Circuit".
-            
             // A. LOGIC HIGH (Short the Coil)
-            // Set Duty Cycle to > 100% (Value larger than ARR)
-            // This forces the MOSFET ON continuously.
             __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, RFID_ARR_125K + 1);
             delay_tim_ticks(period / 2);
 
             // B. LOGIC LOW (Open the Coil)
-            // Set Duty Cycle to 0%
-            // This forces the MOSFET OFF continuously.
             __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
             delay_tim_ticks(period / 2);
         }
 
+        // --- CRITICAL SECTION END ---
+        // Re-enable interrupts so HAL_Delay and Touch_IsPressed can work
+        __enable_irq();
+
         // --- INTER-MESSAGE GAP ---
-        // Release the coil (0% Duty) to let the reader recover
+        // Release the coil (0% Duty)
         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
         HAL_Delay(15); 
     }
 
     // 3. Cleanup
-    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1); // Completely stop the timer
+    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1); 
     HAL_TIM_Base_Stop(&htim2);
     rfid_state.is_busy = 0;
     HAL_Delay(300); 
