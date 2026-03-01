@@ -3,12 +3,12 @@
   * @file    ui.c
   * @brief   User Interface Logic for STM32 RFID Tool.
   * Handles state machine, drawing, touch inputs, and virtual keyboard.
+  * RFID Hardware calls are currently stubbed for fresh development.
   ******************************************************************************
   */
 
 #include "ui.h"
 #include "storage.h"
-#include "rfid_driver.h" 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h> 
@@ -58,11 +58,26 @@ ButtonDef btn_Conf_No     = {20, 130, 90, 60};
 ButtonDef btn_Conf_Yes    = {130, 130, 90, 60}; 
 
 // Keyboard Buttons
-ButtonDef btn_Kb_Mode  = {2,   275, 45, 40}; // [123]
-ButtonDef btn_Kb_Shift = {50,  275, 45, 40}; // [SHF]
-ButtonDef btn_Kb_Space = {98,  275, 45, 40}; // [_]
-ButtonDef btn_Kb_Del   = {146, 275, 45, 40}; // [DEL]
-ButtonDef btn_Kb_Done  = {194, 275, 44, 40}; // [OK]
+ButtonDef btn_Kb_Mode  = {2,   275, 45, 40}; 
+ButtonDef btn_Kb_Shift = {50,  275, 45, 40}; 
+ButtonDef btn_Kb_Space = {98,  275, 45, 40}; 
+ButtonDef btn_Kb_Del   = {146, 275, 45, 40}; 
+ButtonDef btn_Kb_Done  = {194, 275, 44, 40}; 
+
+// --- RFID HARDWARE STUBS ---
+// These replace the rfid_driver.c logic so the UI remains functional.
+
+void RFID_Init(void) {}
+void RFID_Read_Start(void) {}
+void RFID_Read_Stop(void) {}
+void RFID_Carrier_Off(void) {}
+void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
+    // Stub allows the UI to enter the EMULATING page.
+    // Loop until user presses "Stop" (handled via touch in main loop).
+}
+uint8_t RFID_Process(void) { 
+    return 0; // Never automatically finishes a read in stub mode.
+}
 
 // --- PRIVATE HELPERS ---
 
@@ -224,7 +239,7 @@ void UI_Init(void) {
     LCD_FillColor(COLOR_TERM_BG);
     currentState = PAGE_BOOT;
     Storage_LoadSignals(); 
-    RFID_Init(); // Initialize the RFID Hardware
+    RFID_Init(); 
 }
 
 void UI_Draw_Boot_Sequence(void) {
@@ -286,7 +301,6 @@ void UI_Refresh(void) {
         {
             LCD_WriteString("// CARD OPTIONS", 5, 10, Font_7x10, COLOR_TERM_DIM, BLACK);
             LCD_FillRect(0, 25, 240, 1, COLOR_TERM_DIM);
-            
             LCD_WriteString("SELECTED:", 88, 35, Font_7x10, COLOR_TERM_DIM, BLACK);
             
             char* name = signal_db[selected_slot_idx].name;
@@ -348,54 +362,27 @@ void UI_Refresh(void) {
 }
 
 void UI_Update_Dynamic_Elements(void) {
-    // 1. Keyboard Cursor Blinking
     if (currentState == PAGE_KEYBOARD) {
         uint16_t cursor_x = 15 + (strlen(input_buffer) * 7);
         if ((HAL_GetTick() / 500) % 2) LCD_FillRect(cursor_x, 35, 7, 10, COLOR_TERM_TEXT);
         else LCD_FillRect(cursor_x, 35, 7, 10, BLACK);
     }
     
-    // 2. Matrix Animation (The "Weird Changing Text")
     if (currentState == PAGE_EMULATING || currentState == PAGE_READING) {
         if ((HAL_GetTick() % 10) == 0) { 
             char hex[3];
             sprintf(hex, "%02X", rand() % 255);
             uint16_t x = 200 + (rand() % 30);
             uint16_t y = 280 + (rand() % 30);
-            // In Reading Mode, this plays in the middle (y=140), so we must stay away!
             if (currentState == PAGE_READING) { x = 100 + (rand() % 40); y = 140 + (rand() % 40); }
             LCD_WriteString(hex, x, y, Font_7x10, COLOR_TERM_DIM, BLACK);
         }
     }
     
-    // 3. RFID Driver Logic Hook
     if (currentState == PAGE_READING) {
-        
-        // --- DEBUG: Show Live Edge Count ---
-        // MOVED TO (20, 50) to avoid the matrix animation
-        if ((HAL_GetTick() % 100) == 0) {
-            char debug_buf[32];
-            sprintf(debug_buf, "EDGES: %4lu", rfid_state.samples_captured);
-            // Draw at x=20, y=50 (High up, safe from matrix)
-            LCD_WriteString(debug_buf, 20, 50, Font_7x10, COLOR_ALERT, BLACK);
-        }
-        // -----------------------------------
-        
-        if (RFID_Process()) { // Returns 1 if data capture complete
-            int new_slot = Find_Free_Slot();
-            if (new_slot != -1) {
-                selected_slot_idx = new_slot;
-                signal_db[new_slot].is_active = 1; 
-                
-                // Copy Raw Samples from Driver to Database
-                signal_db[new_slot].length = rfid_state.samples_captured;
-                memcpy(signal_db[new_slot].raw_data, (void*)rfid_state.raw_timings, sizeof(uint32_t) * rfid_state.samples_captured);
-                
-                strcpy(input_buffer, ""); 
-                kb_mode = 0; kb_shift = 0; 
-                currentState = PAGE_KEYBOARD;
-                ui_needs_update = 1;
-            }
+        // RFID_Process currently returns 0 in stub mode.
+        if (RFID_Process()) { 
+            // This logic will be triggered once you implement the new RF logic.
         }
     }
 }
@@ -416,7 +403,7 @@ void UI_Handle_Touch(uint16_t x, uint16_t y) {
             if (Button_IsPressed(btn_Read, x, y)) {
                 Flash_Button(&btn_Read, "> READ CARD", 0);
                 currentState = PAGE_READING;
-                RFID_Read_Start(); // Start Hardware
+                RFID_Read_Start(); 
                 ui_needs_update = 1;
             }
             break;
@@ -455,8 +442,7 @@ void UI_Handle_Touch(uint16_t x, uint16_t y) {
                 currentState = PAGE_EMULATING;
                 ui_needs_update = 1;
                 UI_Refresh(); 
-                // Replay the Saved Signal
-                RFID_Emulate_Raw((volatile uint32_t*)signal_db[selected_slot_idx].raw_data, signal_db[selected_slot_idx].length);
+                RFID_Emulate_Raw(signal_db[selected_slot_idx].raw_data, signal_db[selected_slot_idx].length);
             }
             else if (Button_IsPressed(btn_Opt_Rename, x, y)) {
                 Flash_Button(&btn_Opt_Rename, "RENAME", 0);
@@ -519,8 +505,7 @@ void UI_Handle_Touch(uint16_t x, uint16_t y) {
             }
             else if (Button_IsPressed(btn_Kb_Mode, x, y)) {
                 kb_mode = !kb_mode; 
-                const char* new_lbl = (kb_mode==0) ? "123" : "ABC";
-                Flash_Button(&btn_Kb_Mode, new_lbl, 0);
+                Flash_Button(&btn_Kb_Mode, (kb_mode==0) ? "123" : "ABC", 0);
                 ui_needs_update = 1; 
             }
             else if (Button_IsPressed(btn_Kb_Shift, x, y)) {
@@ -553,7 +538,7 @@ void UI_Handle_Touch(uint16_t x, uint16_t y) {
         case PAGE_READING:
             if (Button_IsPressed(btn_Back, x, y)) {
                 Flash_Button(&btn_Back, "< CANCEL", 1); 
-                RFID_Read_Stop(); // Stop Hardware
+                RFID_Read_Stop(); 
                 currentState = PAGE_MAIN;
                 ui_needs_update = 1;
             }
