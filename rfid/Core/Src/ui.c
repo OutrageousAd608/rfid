@@ -348,26 +348,39 @@ void UI_Refresh(void) {
 }
 
 void UI_Update_Dynamic_Elements(void) {
+    // 1. Keyboard Cursor Blinking
     if (currentState == PAGE_KEYBOARD) {
         uint16_t cursor_x = 15 + (strlen(input_buffer) * 7);
         if ((HAL_GetTick() / 500) % 2) LCD_FillRect(cursor_x, 35, 7, 10, COLOR_TERM_TEXT);
         else LCD_FillRect(cursor_x, 35, 7, 10, BLACK);
     }
     
-    // Matrix Animation during activity
+    // 2. Matrix Animation (The "Weird Changing Text")
     if (currentState == PAGE_EMULATING || currentState == PAGE_READING) {
         if ((HAL_GetTick() % 10) == 0) { 
             char hex[3];
             sprintf(hex, "%02X", rand() % 255);
             uint16_t x = 200 + (rand() % 30);
             uint16_t y = 280 + (rand() % 30);
+            // In Reading Mode, this plays in the middle (y=140), so we must stay away!
             if (currentState == PAGE_READING) { x = 100 + (rand() % 40); y = 140 + (rand() % 40); }
             LCD_WriteString(hex, x, y, Font_7x10, COLOR_TERM_DIM, BLACK);
         }
     }
     
-    // RFID Driver Logic Hook
+    // 3. RFID Driver Logic Hook
     if (currentState == PAGE_READING) {
+        
+        // --- DEBUG: Show Live Edge Count ---
+        // MOVED TO (20, 50) to avoid the matrix animation
+        if ((HAL_GetTick() % 100) == 0) {
+            char debug_buf[32];
+            sprintf(debug_buf, "EDGES: %4lu", rfid_state.samples_captured);
+            // Draw at x=20, y=50 (High up, safe from matrix)
+            LCD_WriteString(debug_buf, 20, 50, Font_7x10, COLOR_ALERT, BLACK);
+        }
+        // -----------------------------------
+        
         if (RFID_Process()) { // Returns 1 if data capture complete
             int new_slot = Find_Free_Slot();
             if (new_slot != -1) {
@@ -440,6 +453,7 @@ void UI_Handle_Touch(uint16_t x, uint16_t y) {
             if (Button_IsPressed(btn_Opt_Emulate, x, y)) {
                 Flash_Button(&btn_Opt_Emulate, "EMULATE", 0);
                 currentState = PAGE_EMULATING;
+                ui_needs_update = 1;
                 UI_Refresh(); 
                 // Replay the Saved Signal
                 RFID_Emulate_Raw((volatile uint32_t*)signal_db[selected_slot_idx].raw_data, signal_db[selected_slot_idx].length);

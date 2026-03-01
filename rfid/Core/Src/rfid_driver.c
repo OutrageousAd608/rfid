@@ -49,8 +49,8 @@ void RFID_Init(void) {
     rfid_state.data_ready = 0;
 
     // Ensure PWM and Capture timers are initialized but paused
-    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
-    HAL_TIM_IC_Stop_IT(&htim2, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_2);
+    HAL_TIM_IC_Stop_IT(&htim2, TIM_CHANNEL_2);
 }
 
 // --- RECEIVER LOGIC (Analog Frontend Input) ---
@@ -69,11 +69,11 @@ void RFID_Read_Start(void) {
 
     // 3. Start Recording Edges from the Comparator
     __HAL_TIM_SET_COUNTER(&htim2, 0);
-    HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
+    HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_2);
 }
 
 void RFID_Read_Stop(void) {
-    HAL_TIM_IC_Stop_IT(&htim2, TIM_CHANNEL_1);
+    HAL_TIM_IC_Stop_IT(&htim2, TIM_CHANNEL_2);
     RFID_Carrier_Off();
     rfid_state.is_busy = 0;
 }
@@ -85,14 +85,14 @@ void RFID_Carrier_On(void) {
     __HAL_TIM_SET_AUTORELOAD(&htim3, RFID_ARR_125K);
 
     // 2. Set Fixed Pulse Width (2us) for Class-C Resonance
-    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, RFID_PULSE_WIDTH);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, RFID_PULSE_WIDTH);
 
     // 3. Start the PWM on PA6
-    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
 }
 
 void RFID_Carrier_Off(void) {
-    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_2);
 }
 
 void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
@@ -103,8 +103,8 @@ void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
     
     // START the PWM peripheral, but set Pulse to 0 initially (Transistor Open)
     __HAL_TIM_SET_AUTORELOAD(&htim3, RFID_ARR_125K);
-    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0); 
-    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0); 
+    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
 
     // 2. The Infinite Loop (Until User Touches Screen)
     while (!Touch_IsPressed()) {
@@ -121,11 +121,11 @@ void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
             if (period < 100 || period > 50000) continue; 
 
             // A. LOGIC HIGH (Short the Coil)
-            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, RFID_ARR_125K + 1);
+            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, RFID_ARR_125K + 1);
             delay_tim_ticks(period / 2);
 
             // B. LOGIC LOW (Open the Coil)
-            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
+            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0);
             delay_tim_ticks(period / 2);
         }
 
@@ -135,12 +135,12 @@ void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
 
         // --- INTER-MESSAGE GAP ---
         // Release the coil (0% Duty)
-        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0);
         HAL_Delay(15); 
     }
 
     // 3. Cleanup
-    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1); 
+    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_2); 
     HAL_TIM_Base_Stop(&htim2);
     rfid_state.is_busy = 0;
     HAL_Delay(300); 
@@ -160,7 +160,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
     }
 
     // Capture the period (Time since last edge)
-    uint32_t val = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
+    uint32_t val = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_2);
 
     // Reset counter for the next measurement (Differential measurement)
     __HAL_TIM_SET_COUNTER(htim, 0);
