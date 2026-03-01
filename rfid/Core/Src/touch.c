@@ -72,7 +72,6 @@ uint8_t Touch_GetPixels(uint16_t *x, uint16_t *y) {
     if (!Touch_IsPressed()) return 0;
 
     HAL_Delay(20); // Debounce
-
     if (!Touch_IsPressed()) return 0;
 
     uint16_t raw_x = TP_ReadAxis(CMD_X_READ);
@@ -82,17 +81,16 @@ uint8_t Touch_GetPixels(uint16_t *x, uint16_t *y) {
     if (raw_x < 50 || raw_x > 4050) return 0;
     if (raw_y < 50 || raw_y > 4050) return 0;
 
-    // Clamp to calibration limits
-    if (raw_x < RAW_X_MIN) raw_x = RAW_X_MIN;
-    if (raw_x > RAW_X_MAX) raw_x = RAW_X_MAX;
+    // --- 180 DEGREE MAPPING ---
+    // We invert both axes to match the 0x88 LCD rotation.
     
-    // Map raw values to screen pixels (Rotation logic included)
-    *y = (uint32_t)(raw_x - RAW_X_MIN) * TOUCH_HEIGHT / (RAW_X_MAX - RAW_X_MIN);
+    // Map and Invert Y
+    uint32_t y_val = (uint32_t)(raw_x - RAW_X_MIN) * TOUCH_HEIGHT / (RAW_X_MAX - RAW_X_MIN);
+    *y = TOUCH_HEIGHT - y_val;
 
-    if (raw_y < RAW_Y_MIN) raw_y = RAW_Y_MIN;
-    if (raw_y > RAW_Y_MAX) raw_y = RAW_Y_MAX;
-
-    *x = TOUCH_WIDTH - ((uint32_t)(raw_y - RAW_Y_MIN) * TOUCH_WIDTH / (RAW_Y_MAX - RAW_Y_MIN));
+    // Map and Invert X
+    uint32_t x_val = (uint32_t)(raw_y - RAW_Y_MIN) * TOUCH_WIDTH / (RAW_Y_MAX - RAW_Y_MIN);
+    *x = x_val; 
 
     return 1;
 }

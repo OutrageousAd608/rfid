@@ -69,8 +69,8 @@ void LCD_Init(void) {
     LCD_WriteCommand(0xC5); LCD_WriteData(0x3E); LCD_WriteData(0x28);
     LCD_WriteCommand(0xC7); LCD_WriteData(0x86);
 
-    // 4. Orientation Control (0x48 = Portrait/Pins Down)
-    LCD_WriteCommand(0x36); LCD_WriteData(0x48);
+    // 4. Orientation Control (0x88 = Portrait/Pins up)
+    LCD_WriteCommand(0x36); LCD_WriteData(0x88);
 
     // 5. Pixel Format (16-bit RGB565)
     LCD_WriteCommand(0x3A); LCD_WriteData(0x55); 
