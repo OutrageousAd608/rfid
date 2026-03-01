@@ -39,7 +39,7 @@ static uint16_t TP_ReadAxis_Raw(uint8_t cmd) {
     uint8_t data_rx[3];
 
     HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_RESET);
-    HAL_SPI_TransmitReceive(&hspi2, data_tx, data_rx, 3, 10);
+    HAL_SPI_TransmitReceive(&hspi3, data_tx, data_rx, 3, 10);
     HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET);
 
     return ((data_rx[1] << 8) | data_rx[2]) >> 3;

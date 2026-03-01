@@ -57,20 +57,20 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define TOUCH_CS_Pin GPIO_PIN_0
-#define TOUCH_CS_GPIO_Port GPIOC
 #define TOUCH_IRQ_Pin GPIO_PIN_1
 #define TOUCH_IRQ_GPIO_Port GPIOC
 #define RFID_LISTEN_Pin GPIO_PIN_1
 #define RFID_LISTEN_GPIO_Port GPIOA
+#define LCD_CS_Pin GPIO_PIN_4
+#define LCD_CS_GPIO_Port GPIOA
 #define LCD_RST_Pin GPIO_PIN_7
 #define LCD_RST_GPIO_Port GPIOC
 #define LCD_DC_Pin GPIO_PIN_9
 #define LCD_DC_GPIO_Port GPIOA
+#define TOUCH_CS_Pin GPIO_PIN_15
+#define TOUCH_CS_GPIO_Port GPIOA
 #define RFID_PULSE_Pin GPIO_PIN_5
 #define RFID_PULSE_GPIO_Port GPIOB
-#define LCD_CS_Pin GPIO_PIN_6
-#define LCD_CS_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
