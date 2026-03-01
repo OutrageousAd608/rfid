@@ -59,6 +59,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define TOUCH_IRQ_Pin GPIO_PIN_1
 #define TOUCH_IRQ_GPIO_Port GPIOC
+#define EMLT_PWM_Pin GPIO_PIN_3
+#define EMLT_PWM_GPIO_Port GPIOA
 #define LCD_CS_Pin GPIO_PIN_4
 #define LCD_CS_GPIO_Port GPIOA
 #define LCD_RST_Pin GPIO_PIN_7
