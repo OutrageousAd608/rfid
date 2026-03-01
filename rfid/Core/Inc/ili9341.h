@@ -35,6 +35,12 @@
 void LCD_Init(void);
 
 /**
+ * @brief  Quickly restores display registers and 180-degree orientation.
+ * @note   Used for recovery if screen power is lost while STM32 remains on.
+ */
+void LCD_QuickWake(void);
+
+/**
  * @brief  Fills the entire screen with a specific color.
  * @param  color: 16-bit RGB565 color value.
  */

@@ -101,6 +101,7 @@ int main(void)
   UI_Draw_Boot_Sequence(); 
   
   uint16_t px, py;
+  uint32_t recovery_timer = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -123,9 +124,20 @@ int main(void)
           HAL_Delay(50); // Small debounce for page switching
       }
       
-      // 4. Handle Hardware Logic
-      // Logic removed: It is now handled inside UI_Update_Dynamic_Elements -> RFID_Process()
-      // This keeps the main loop clean.
+      // --- SCREEN RECOVERY LOGIC ---
+      // If IRQ is LOW (screen touched/active)
+      if (HAL_GPIO_ReadPin(TOUCH_IRQ_GPIO_Port, TOUCH_IRQ_Pin) == GPIO_PIN_RESET) {
+          if (recovery_timer == 0) recovery_timer = HAL_GetTick();
+
+          // If held for 3 seconds
+          if (HAL_GetTick() - recovery_timer > 3000) {
+              LCD_QuickWake();      // Restore LCD registers & 180 deg turn
+              ui_needs_update = 1;  // Force redraw of the current page
+              recovery_timer = 0;   // Reset timer
+          }
+      } else {
+          recovery_timer = 0; // Reset if released
+      }
 
   }
   /* USER CODE END 3 */
