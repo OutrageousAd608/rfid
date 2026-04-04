@@ -1,0 +1,8 @@
+../Core/Src/main.c:65:6:PCF_Delay	2
+../Core/Src/main.c:72:6:PCF_InitSync	1
+../Core/Src/main.c:92:6:PCF_WriteByte	3
+../Core/Src/main.c:114:9:PCF_ReadByte	3
+../Core/Src/main.c:144:5:main	1
+../Core/Src/main.c:202:6:SystemClock_Config	3
+../Core/Src/main.c:248:13:MX_GPIO_Init	1
+../Core/Src/main.c:286:6:Error_Handler	1
