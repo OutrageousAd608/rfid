@@ -151,8 +151,8 @@ int main(void)
   PCF_InitSync();
   PCF_WriteRead(0x51);
   HAL_Delay(10);
-  volatile uint8_t page0_raw = 0;
-  volatile uint8_t page0_data = 0;
+
+
 
   /* USER CODE END 2 */
 
@@ -160,11 +160,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
-	  PCF_InitSync();
-	  page0_raw = PCF_WriteRead(0x04);
-	  page0_data = page0_raw & 0x0F;
-	  HAL_Delay(200);
 
     /* USER CODE END WHILE */
 

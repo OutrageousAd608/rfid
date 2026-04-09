@@ -2,6 +2,6 @@
 ../Core/Src/main.c:65:6:PCF_InitSync	1
 ../Core/Src/main.c:78:9:PCF_WriteRead	5
 ../Core/Src/main.c:123:5:main	1
-../Core/Src/main.c:180:6:SystemClock_Config	3
-../Core/Src/main.c:226:13:MX_GPIO_Init	1
-../Core/Src/main.c:264:6:Error_Handler	1
+../Core/Src/main.c:175:6:SystemClock_Config	3
+../Core/Src/main.c:221:13:MX_GPIO_Init	1
+../Core/Src/main.c:259:6:Error_Handler	1
