@@ -4,16 +4,6 @@
   * @file           : main.c
   * @brief          : Main program body
   ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2026 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
@@ -62,77 +52,66 @@ static void MX_GPIO_Init(void);
 #define MOSI_L() HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET)
 #define MISO_R() HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14)
 
-void PCF_Delay(void) {
-    for(volatile int i = 0; i < 20; i++) {
+void PCF_Delay(uint32_t count) {
+
+    for(volatile uint32_t i = 0; i < count; i++) {
+
         __NOP();
+
     }
+
 }
 
-// Function to reset and initialize the PCF7991AT serial interface
 void PCF_InitSync(void) {
-    // 1. Ensure both Clock and MOSI start LOW
-    SCK_L();
-    MOSI_L();
-    PCF_Delay();
 
-    // 2. Pull the Clock HIGH
     SCK_H();
-    PCF_Delay();
+    PCF_Delay(1000);
 
-    // 3. THE TRIGGER: Transition MOSI from LOW to HIGH while Clock is HIGH
     MOSI_H();
-    PCF_Delay();
+    PCF_Delay(1000);
 
-    // 4. Return Clock to LOW so it's ready to receive standard data bytes
     SCK_L();
-    PCF_Delay();
+    PCF_Delay(1000);
+
 }
 
-// Function to send 1 command byte to the PCF7991AT
-void PCF_WriteByte(uint8_t data) {
+uint8_t PCF_WriteRead(uint8_t cmd) {
+
+    uint8_t response = 0;
+
     for (int i = 7; i >= 0; i--) {
 
-        // 1. Set MOSI data bit (MSB first)
-        if (data & (1 << i)) {
-            MOSI_H(); // Let resistor pull it high
-        } else {
-            MOSI_L(); // Drive it low to ground
-        }
-        PCF_Delay();
+        if (cmd & (1 << i)) { MOSI_H(); } else { MOSI_L(); }
 
-        // 2. Clock High (The PCF reads our MOSI bit on this rising edge)
+        PCF_Delay(1000);
         SCK_H();
-        PCF_Delay();
-
-        // 3. Clock Low
+        PCF_Delay(1000);
         SCK_L();
-        PCF_Delay();
+        PCF_Delay(1000);
+
     }
-}
 
-// Function to read 1 response byte from the PCF7991AT
-uint8_t PCF_ReadByte(void) {
-    uint8_t data = 0;
-
-    // Crucial: Release the MOSI line (let it float high) while reading
-    // so we don't accidentally send garbage data to the chip's input.
-    MOSI_H();
+    MOSI_L();
+    PCF_Delay(1000);
 
     for (int i = 7; i >= 0; i--) {
-        // 1. Clock High
-        SCK_H();
-        PCF_Delay();
 
-        // 2. Read MISO bit while clock is high
+        SCK_H();
+        PCF_Delay(1000);
+
         if (MISO_R() == GPIO_PIN_SET) {
-            data |= (1 << i);
+
+            response |= (1 << i);
+
         }
 
-        // 3. Clock Low (The PCF shifts out the next bit on this falling edge)
         SCK_L();
-        PCF_Delay();
+        PCF_Delay(1000);
+
     }
-    return data;
+
+    return response;
+
 }
 
 /* USER CODE END 0 */
@@ -168,19 +147,12 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
 
-  // 1. Initial State
-	SCK_L();
-	MOSI_H();
-	HAL_Delay(10); // Give the chip 10ms to wake up after power-on
-
-	// 2. Sync the chip's internal shift register!
-	PCF_InitSync();
-
-	// 3. Send the "Read Page 0" command
-	PCF_WriteByte(0x40);
-
-	// 4. Read the response from the chip
-	uint8_t page0_config = PCF_ReadByte();
+  HAL_Delay(100);
+  PCF_InitSync();
+  PCF_WriteRead(0x51);
+  HAL_Delay(10);
+  volatile uint8_t page0_raw = 0;
+  volatile uint8_t page0_data = 0;
 
   /* USER CODE END 2 */
 
@@ -188,6 +160,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+	  PCF_InitSync();
+	  page0_raw = PCF_WriteRead(0x04);
+	  page0_data = page0_raw & 0x0F;
+	  HAL_Delay(200);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -216,7 +194,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 2;
+  RCC_OscInitStruct.PLL.PLLM = 4;
   RCC_OscInitStruct.PLL.PLLN = 84;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 4;

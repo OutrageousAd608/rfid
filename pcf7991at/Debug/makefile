@@ -84,8 +84,8 @@ all: main-build
 main-build: pcf7991at.elf secondary-outputs
 
 # Tool invocations
-pcf7991at.elf pcf7991at.map: $(OBJS) $(USER_OBJS) /Users/outrageousad607/cod/rfid/rfid/pcf7991at/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "pcf7991at.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/outrageousad607/cod/rfid/rfid/pcf7991at/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pcf7991at.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+pcf7991at.elf pcf7991at.map: $(OBJS) $(USER_OBJS) C:\stm32\rfid\pcf7991at\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "pcf7991at.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\stm32\rfid\pcf7991at\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pcf7991at.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
