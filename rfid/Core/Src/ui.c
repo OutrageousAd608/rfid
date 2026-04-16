@@ -9,6 +9,7 @@
 
 #include "ui.h"
 #include "storage.h"
+#include "pcf7991at.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h> 
@@ -63,21 +64,6 @@ ButtonDef btn_Kb_Shift = {50,  275, 45, 40};
 ButtonDef btn_Kb_Space = {98,  275, 45, 40}; 
 ButtonDef btn_Kb_Del   = {146, 275, 45, 40}; 
 ButtonDef btn_Kb_Done  = {194, 275, 44, 40}; 
-
-// --- RFID HARDWARE STUBS ---
-// These replace the rfid_driver.c logic so the UI remains functional.
-
-void RFID_Init(void) {}
-void RFID_Read_Start(void) {}
-void RFID_Read_Stop(void) {}
-void RFID_Carrier_Off(void) {}
-void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length) {
-    // Stub allows the UI to enter the EMULATING page.
-    // Loop until user presses "Stop" (handled via touch in main loop).
-}
-uint8_t RFID_Process(void) { 
-    return 0; // Never automatically finishes a read in stub mode.
-}
 
 // --- PRIVATE HELPERS ---
 

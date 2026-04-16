@@ -49,12 +49,4 @@ void UI_Refresh(void);
 void UI_Handle_Touch(uint16_t x, uint16_t y);
 void UI_Update_Dynamic_Elements(void); 
 
-// --- RFID HARDWARE STUBS (Placeholders for your new code) ---
-void RFID_Init(void);
-void RFID_Read_Start(void);
-void RFID_Read_Stop(void);
-void RFID_Carrier_Off(void);
-void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length);
-uint8_t RFID_Process(void);
-
 #endif

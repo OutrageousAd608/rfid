@@ -1,0 +1,2 @@
+../Core/Src/storage.c:14:6:Storage_SaveSignals	56	static
+../Core/Src/storage.c:43:6:Storage_LoadSignals	16	static

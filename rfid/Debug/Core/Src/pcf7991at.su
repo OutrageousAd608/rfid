@@ -1,0 +1,10 @@
+../Core/Src/pcf7991at.c:10:6:PCF_Delay	24	static,ignoring_inline_asm
+../Core/Src/pcf7991at.c:20:6:PCF_InitSync	8	static
+../Core/Src/pcf7991at.c:33:6:PCF_Write	24	static
+../Core/Src/pcf7991at.c:53:9:PCF_WriteRead	32	static
+../Core/Src/pcf7991at.c:94:6:RFID_Init	16	static
+../Core/Src/pcf7991at.c:134:6:RFID_Read_Start	8	static
+../Core/Src/pcf7991at.c:141:6:RFID_Read_Stop	8	static
+../Core/Src/pcf7991at.c:149:6:RFID_Carrier_Off	4	static
+../Core/Src/pcf7991at.c:153:6:RFID_Emulate_Raw	16	static
+../Core/Src/pcf7991at.c:157:9:RFID_Process	4	static
