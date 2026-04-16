@@ -116,7 +116,7 @@ uint8_t PCF_WriteRead(uint8_t cmd) {
 
 }
 
-uint8_t PCF_Write(uint8_t cmd){
+void PCF_Write(uint8_t cmd){
 
 	PCF_InitSync();
 
@@ -184,9 +184,15 @@ int main(void)
   //configure page 3
   PCF_Write(0b01111000);
 
-  //turning on 5V square waves to read the phase
+  //turning on 5V square waves
   PCF_Write(0b01010010);
   HAL_Delay(100);
+
+  //storing ACQAMP
+  PCF_Write(0b01100100);
+  HAL_Delay(10);
+  PCF_Write(0b01100000);
+
   //reading phase
   uint8_t phase = PCF_WriteRead(0b00001000);
   //write the sampling time
