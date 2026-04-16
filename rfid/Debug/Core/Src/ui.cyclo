@@ -11,5 +11,5 @@
 ../Core/Src/ui.c:223:6:UI_Init	1
 ../Core/Src/ui.c:231:6:UI_Draw_Boot_Sequence	2
 ../Core/Src/ui.c:241:6:UI_Refresh	19
-../Core/Src/ui.c:350:6:UI_Update_Dynamic_Elements	8
-../Core/Src/ui.c:376:6:UI_Handle_Touch	42
+../Core/Src/ui.c:350:6:UI_Update_Dynamic_Elements	10
+../Core/Src/ui.c:391:6:UI_Handle_Touch	42

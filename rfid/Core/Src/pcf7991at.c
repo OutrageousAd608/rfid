@@ -156,6 +156,8 @@ void RFID_Emulate_Raw(volatile uint32_t *timings, uint16_t length){
 
 uint8_t RFID_Process(void){
     
-    return 0;
+    //need to write capture logic here
+    //return 1 if the capture was successful and return 0 if it wasn't so it tries again
+    return 1;
 
 }

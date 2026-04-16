@@ -368,7 +368,22 @@ void UI_Update_Dynamic_Elements(void) {
     if (currentState == PAGE_READING) {
         // RFID_Process currently returns 0 in stub mode.
         if (RFID_Process()) { 
-            // This logic will be triggered once you implement the new RF logic.
+            //successfully captured the fob's signature
+            RFID_Read_Stop(); 
+
+            selected_slot_idx = Find_Free_Slot(); 
+            
+            if (selected_slot_idx != -1) {
+
+                memset(input_buffer, 0, sizeof(input_buffer)); 
+                currentState = PAGE_KEYBOARD; 
+
+            } else {
+
+                currentState = PAGE_MAIN; 
+                
+            }
+            ui_needs_update = 1;
         }
     }
 }

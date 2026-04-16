@@ -12,4 +12,4 @@
 ../Core/Src/ui.c:231:6:UI_Draw_Boot_Sequence	24	static
 ../Core/Src/ui.c:241:6:UI_Refresh	144	static
 ../Core/Src/ui.c:350:6:UI_Update_Dynamic_Elements	48	static
-../Core/Src/ui.c:376:6:UI_Handle_Touch	96	static
+../Core/Src/ui.c:391:6:UI_Handle_Touch	96	static
