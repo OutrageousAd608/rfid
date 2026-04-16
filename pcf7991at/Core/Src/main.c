@@ -77,6 +77,8 @@ void PCF_InitSync(void) {
 
 uint8_t PCF_WriteRead(uint8_t cmd) {
 
+	PCF_InitSync();
+
     uint8_t response = 0;
 
     for (int i = 7; i >= 0; i--) {
@@ -114,6 +116,26 @@ uint8_t PCF_WriteRead(uint8_t cmd) {
 
 }
 
+uint8_t PCF_Write(uint8_t cmd){
+
+	PCF_InitSync();
+
+    for (int i = 7; i >= 0; i--) {
+
+        if (cmd & (1 << i)) { MOSI_H(); } else { MOSI_L(); }
+
+        PCF_Delay(1000);
+        SCK_H();
+        PCF_Delay(1000);
+        SCK_L();
+        PCF_Delay(1000);
+
+    }
+
+    MOSI_L();
+
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -148,9 +170,36 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   HAL_Delay(100);
-  PCF_InitSync();
-  PCF_WriteRead(0x51);
+
+  //turn off 5V square wave immediately before starting
+  PCF_Write(0b01010001);
   HAL_Delay(10);
+
+  //configure page 0
+  PCF_Write(0b01000011);
+  //configure page 1
+  PCF_Write(0b01010011);
+  //configure page 2
+  PCF_Write(0b01100000);
+  //configure page 3
+  PCF_Write(0b01111000);
+
+  //turning on 5V square waves to read the phase
+  PCF_Write(0b01010010);
+  HAL_Delay(100);
+  //reading phase
+  uint8_t phase = PCF_WriteRead(0b00001000);
+  //write the sampling time
+  phase &= 0b00111111;
+  phase *= 2;
+  if(phase > 0b00111111){
+    phase = 0b00111111;
+  }
+  PCF_Write(0b10000000 + phase);
+  HAL_Delay(100);
+
+  //starting the read, bits should be available on the MISO line
+  PCF_Write(0b11100000);
 
 
 
