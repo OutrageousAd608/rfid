@@ -18,16 +18,13 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "spi.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdio.h>
-#include "ili9341.h"
-#include "fonts.h"
-#include "touch.h"
-#include "ui.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,6 +50,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -94,12 +92,19 @@ int main(void)
   MX_SPI1_Init();
   MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
-  UI_Init();
-  UI_Draw_Boot_Sequence(); 
   
-  uint16_t px, py;
-  uint32_t recovery_timer = 0;
   /* USER CODE END 2 */
+
+  /* Init scheduler */
+  osKernelInitialize();
+
+  /* Call init function for freertos objects (in cmsis_os2.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -108,33 +113,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-      // 1. Draw UI (if changed)
-      UI_Refresh();
-      
-      // 2. Animate elements (if needed)
-      // RFID logic (Listening/Emulating) is handled inside here now
-      UI_Update_Dynamic_Elements();
-
-      // 3. Handle Input
-      if (Touch_GetPixels(&px, &py)) {
-          UI_Handle_Touch(px, py);
-          HAL_Delay(50); // Small debounce for page switching
-      }
-      
-      // --- SCREEN RECOVERY LOGIC ---
-      // If IRQ is LOW (screen touched/active)
-      if (HAL_GPIO_ReadPin(TOUCH_IRQ_GPIO_Port, TOUCH_IRQ_Pin) == GPIO_PIN_RESET) {
-          if (recovery_timer == 0) recovery_timer = HAL_GetTick();
-
-          // If held for 3 seconds
-          if (HAL_GetTick() - recovery_timer > 3000) {
-              LCD_QuickWake();      // Restore LCD registers & 180 deg turn
-              ui_needs_update = 1;  // Force redraw of the current page
-              recovery_timer = 0;   // Reset timer
-          }
-      } else {
-          recovery_timer = 0; // Reset if released
-      }
 
   }
   /* USER CODE END 3 */
@@ -188,6 +166,27 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM1 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM1) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.

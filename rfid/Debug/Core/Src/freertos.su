@@ -1,0 +1,5 @@
+../Core/Src/freertos.c:92:6:vApplicationStackOverflowHook	32	static
+../Core/Src/freertos.c:109:6:MX_FREERTOS_Init	8	static
+../Core/Src/freertos.c:157:6:StartDefaultTask	16	static
+../Core/Src/freertos.c:175:6:StartRFIDTask	16	static
+../Core/Src/freertos.c:194:6:StartGUITask	24	static

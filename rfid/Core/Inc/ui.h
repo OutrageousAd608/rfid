@@ -28,7 +28,7 @@ extern AppState currentState;
 extern uint8_t ui_needs_update;
 
 // --- DATABASE CONFIG ---
-#define MAX_SLOTS 10      
+#define MAX_SLOTS 9      
 #define NAME_LEN  10      
 #define MAX_SAMPLES 2048  
 
