@@ -211,7 +211,7 @@ void StartGUITask(void *argument)
 		// 3. Handle Input
 		if (Touch_GetPixels(&px, &py)) {
 			UI_Handle_Touch(px, py);
-			HAL_Delay(50); // Small debounce for page switching
+			osDelay(50); // Small debounce for page switching
 		}
 
 		// --- SCREEN RECOVERY LOGIC ---

@@ -108,11 +108,11 @@ void RFID_Init(void){
 
     //turning on 5V square waves
     PCF_Write(0b01010010);
-    HAL_Delay(100);
+    osDelay(100);
 
     //storing ACQAMP
     PCF_Write(0b01100100);
-    HAL_Delay(10);
+    osDelay(10);
     PCF_Write(0b01100000);
 
     //reading phase

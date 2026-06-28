@@ -33,7 +33,7 @@ void LCD_WriteData16(uint16_t data) {
 void LCD_QuickWake(void) {
     // Software Reset only (Faster than Hardware Reset)
     LCD_WriteCommand(0x01); 
-    HAL_Delay(10); 
+    osDelay(10); 
 
     // Re-apply 180-degree rotation (0x88)
     LCD_WriteCommand(0x36); 
@@ -45,18 +45,18 @@ void LCD_QuickWake(void) {
     
     // Exit Sleep and Turn On
     LCD_WriteCommand(0x11); 
-    HAL_Delay(20); 
+    osDelay(20); 
     LCD_WriteCommand(0x29); 
 }
 
 void LCD_Init(void) {
     HAL_GPIO_WritePin(LCD_RST_GPIO_Port, LCD_RST_Pin, GPIO_PIN_RESET);
-    HAL_Delay(100);
+    osDelay(100);
     HAL_GPIO_WritePin(LCD_RST_GPIO_Port, LCD_RST_Pin, GPIO_PIN_SET);
-    HAL_Delay(100);
+    osDelay(100);
 
     LCD_WriteCommand(0x01); 
-    HAL_Delay(100); 
+    osDelay(100); 
 
     LCD_WriteCommand(0xCB); LCD_WriteData(0x39); LCD_WriteData(0x2C); LCD_WriteData(0x00); LCD_WriteData(0x34); LCD_WriteData(0x02);
     LCD_WriteCommand(0xCF); LCD_WriteData(0x00); LCD_WriteData(0xC1); LCD_WriteData(0x30);
@@ -76,7 +76,7 @@ void LCD_Init(void) {
     LCD_WriteCommand(0xB1); LCD_WriteData(0x00); LCD_WriteData(0x18);
     LCD_WriteCommand(0xB6); LCD_WriteData(0x08); LCD_WriteData(0x82); LCD_WriteData(0x27);
     
-    LCD_WriteCommand(0x11); HAL_Delay(120); 
+    LCD_WriteCommand(0x11); osDelay(120); 
     LCD_WriteCommand(0x29); 
 }
 

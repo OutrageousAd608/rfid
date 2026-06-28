@@ -88,8 +88,8 @@ all: main-build
 main-build: rfid.elf secondary-outputs
 
 # Tool invocations
-rfid.elf rfid.map: $(OBJS) $(USER_OBJS) C:\Users\Administrator\Richad\rfid\rfid\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "rfid.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Administrator\Richad\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+rfid.elf rfid.map: $(OBJS) $(USER_OBJS) C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "rfid.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\stm32\rfid\rfid\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rfid.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

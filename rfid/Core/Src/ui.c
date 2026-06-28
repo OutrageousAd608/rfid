@@ -106,7 +106,7 @@ static void Draw_Terminal_Button(ButtonDef *btn, const char* text, uint8_t is_al
 static void Flash_Button(ButtonDef *btn, const char* restore_text, uint8_t is_alert) {
     uint16_t flash_color = is_alert ? COLOR_ALERT : COLOR_TERM_DIM;
     LCD_FillRect(btn->x, btn->y, btn->width, btn->height, flash_color);
-    HAL_Delay(50);
+    osDelay(50);
     LCD_FillRect(btn->x + 1, btn->y + 1, btn->width - 2, btn->height - 2, BLACK);
     
     if (restore_text) {
@@ -180,7 +180,7 @@ static char Check_Keyboard_Touch(uint16_t x, uint16_t y) {
             
             if (x >= key_x && x <= key_x + btn_w && y >= key_y && y <= key_y + btn_h) {
                 LCD_FillRect(key_x, key_y, btn_w, btn_h, COLOR_TERM_DIM);
-                HAL_Delay(50);
+                osDelay(50);
                 LCD_FillRect(key_x + 1, key_y + 1, btn_w - 2, btn_h - 2, BLACK);
                 char s[2] = {current_rows[row][col], '\0'}; 
                 LCD_WriteString(s, key_x + 15, key_y + 10, Font_7x10, COLOR_TERM_TEXT, BLACK);
@@ -231,9 +231,9 @@ void UI_Init(void) {
 void UI_Draw_Boot_Sequence(void) {
     if (currentState != PAGE_BOOT) return;
     LCD_FillColor(BLACK);
-    HAL_Delay(500);
+    osDelay(500);
     LCD_WriteString("RFID SYSTEM READY", 60, 140, Font_7x10, COLOR_TERM_TEXT, BLACK);
-    HAL_Delay(500);
+    osDelay(500);
     currentState = PAGE_MAIN;
     ui_needs_update = 1;
 }

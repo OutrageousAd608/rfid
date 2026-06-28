@@ -71,7 +71,7 @@ uint8_t Touch_IsPressed(void) {
 uint8_t Touch_GetPixels(uint16_t *x, uint16_t *y) {
     if (!Touch_IsPressed()) return 0;
 
-    HAL_Delay(20); // Debounce
+    osDelay(20); // Debounce
     if (!Touch_IsPressed()) return 0;
 
     uint16_t raw_x = TP_ReadAxis(CMD_X_READ);
